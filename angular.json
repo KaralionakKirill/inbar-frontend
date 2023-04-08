@@ -21,13 +21,37 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/assets/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles/styles.css"
+              "src/assets/styles/flaticon.css",
+              "src/assets/styles/animate.min.css",
+              "src/assets/styles/animate.min.css",
+              "src/assets/styles/bootstrap.min.css",
+              "src/assets/styles/fontawesome-all.min.css",
+              "src/assets/styles/main.css",
+              "src/assets/styles/normalize.css",
+              "src/assets/styles/nouislider.min.css",
+              "src/assets/styles/owl.carousel.min.css",
+              "src/assets/styles/owl.theme.default.min.css",
+              "src/assets/styles/select2.min.css",
+              "src/assets/styles/style.css",
+              "src/assets/styles/summernote.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.3.1.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/modernizr-3.6.0.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/plugins.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/select2.full.min.js",
+              "src/assets/js/smoothscroll.min.js",
+              "src/assets/js/summernote.min.js",
+              "src/assets/js/validator.min.js",
+              "src/assets/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -82,14 +106,39 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/assets/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles/styles.css"
+              "src/assets/styles/flaticon.css",
+              "src/assets/styles/animate.min.css",
+              "src/assets/styles/animate.min.css",
+              "src/assets/styles/bootstrap.min.css",
+              "src/assets/styles/fontawesome-all.min.css",
+              "src/assets/styles/main.css",
+              "src/assets/styles/normalize.css",
+              "src/assets/styles/nouislider.min.css",
+              "src/assets/styles/owl.carousel.min.css",
+              "src/assets/styles/owl.theme.default.min.css",
+              "src/assets/styles/select2.min.css",
+              "src/assets/styles/style.css",
+              "src/assets/styles/summernote.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.3.1.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/modernizr-3.6.0.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/plugins.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/select2.full.min.js",
+              "src/assets/js/smoothscroll.min.js",
+              "src/assets/js/summernote.min.js",
+              "src/assets/js/validator.min.js",
+              "src/assets/js/bootstrap.min.js"
+            ]
           }
         },
         "lint": {
