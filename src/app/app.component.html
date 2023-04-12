@@ -3,9 +3,9 @@
 </ng-container>
 <ng-template #notResolving>
     <!-- ScrollUp Start Here -->
-    <a href="#wrapper" data-type="section-switch" class="scrollup">
+    <button data-type="section-switch" class="scrollup" (click)="toTop()">
         <i class="fas fa-angle-double-up"></i>
-    </a>
+    </button>
     <!-- ScrollUp End Here -->
     <div id="wrapper" class="wrapper">
         <app-navbar></app-navbar>

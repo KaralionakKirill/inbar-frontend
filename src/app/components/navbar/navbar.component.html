@@ -15,15 +15,15 @@
                     <nav class="site-nav">
                         <ul id="site-menu" class="site-menu">
                             <li>
-                                <a href="#">Home</a>
+                                <a routerLink="/home">Home</a>
                             </li>
                             <li>
-                                <a href="#">Category</a>
+                                <a routerLink="/category">Category</a>
                             </li>
                             <li>
                                 <a href="#">Recipes</a>
                             </li>
-                            <li class="position-static hide-on-mobile-menu">
+                            <li class="possition-static hide-on-mobile-menu">
                                 <a href="#">Pages</a>
                                 <div class="template-mega-menu">
                                     <div class="container">
@@ -190,3 +190,25 @@
     </div>
 </header>
 <!-- Header Area End Here -->
+<!-- Modal Start-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="title-default-bold mb-none">Login</div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="login-form">
+          <input class="main-input-box" type="text" placeholder="Email" />
+          <input class="main-input-box" type="password" placeholder="Password" />
+          <div class="inline-box mb-5 mt-4">
+            <button class="btn-fill" type="submit" value="Login">Login</button>
+            <a href="#" class="btn-register"><i class="fas fa-user"></i>Register Here!</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal End-->

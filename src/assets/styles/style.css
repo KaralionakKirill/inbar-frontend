@@ -1,11 +1,4 @@
 /*---------------------------------------------
-
-Template Name: Ranna | Food And Recipe Html Template 
-Template URL: https://radiustheme.com/demo/html/ranna 
-Author: Radiustheme
-Author URL: https://radiustheme.com 
-Version: 1.0 
-
 =========================================================================  
 [Table of contents]
 =========================================================================
@@ -301,7 +294,7 @@ ul {
     background-color: #f2f2f2;
 }
 
-.position-static {
+.possition-static {
     position: static !important;
 }
 
@@ -649,7 +642,7 @@ ul {
 }
 
 #preloader {
-    background: #ffffff url('../img/loader-drinks.gif') no-repeat scroll center center;
+    background: #ffffff url('../img/preloader.gif') no-repeat scroll center center;
     height: 100%;
     left: 0;
     overflow: visible;
@@ -660,6 +653,7 @@ ul {
 }
 
 .scrollup {
+    border: none;
     overflow: hidden;
     position: fixed;
     height: 40px;
@@ -691,6 +685,7 @@ ul {
 
 .scrollup:hover,
 .scrollup:focus {
+    outline: none;
     color: #ffffff;
 }
 
@@ -701,6 +696,7 @@ ul {
 }
 
 .scrollup.back-top {
+    outline: none;
     bottom: 20px;
 }
 
@@ -3662,6 +3658,7 @@ ul {
         z-index: 999999;
         right: 15px;
         display: block;
+        top: 0;
         padding: 12px 0;
         cursor: pointer;
         -webkit-transition: all 0.3s ease-in-out;
@@ -3898,9 +3895,12 @@ ul {
 }
 
 @media only screen and (max-width: 430px) {
+    .cart-wrap {
+        display: none;
+    }
+
     .header-main-menu .nav-action-elements-layout1 {
-        position: absolute;
-        right: 50px;
+        top: 0;
     }
 }
 
@@ -7330,7 +7330,7 @@ ul {
     margin-bottom: -100px;
     z-index: 8;
     position: relative;
-    background-image: url("../img/figure/box-shadow.png");
+    background-image: url(../img/figure/box-shadow.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -11785,7 +11785,7 @@ ul {
 15. Footer Css
 =========================================================================*/
 footer {
-    padding: 5rem 0;
+    padding: 3rem 0;
     background-color: #111111;
     text-align: center;
     color: #989898;

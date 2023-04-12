@@ -41,16 +41,16 @@
             ],
             "scripts": [
               "src/assets/js/jquery-3.3.1.min.js",
-              "src/assets/js/main.js",
-              "src/assets/js/modernizr-3.6.0.min.js",
-              "src/assets/js/owl.carousel.min.js",
-              "src/assets/js/plugins.js",
               "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/plugins.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/summernote.min.js",
               "src/assets/js/select2.full.min.js",
               "src/assets/js/smoothscroll.min.js",
-              "src/assets/js/summernote.min.js",
-              "src/assets/js/validator.min.js",
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/js/main.js",
+              "src/assets/js/modernizr-3.6.0.min.js",
+              "src/assets/js/validator.min.js"
             ]
           },
           "configurations": {
@@ -128,16 +128,16 @@
             ],
             "scripts": [
               "src/assets/js/jquery-3.3.1.min.js",
-              "src/assets/js/main.js",
-              "src/assets/js/modernizr-3.6.0.min.js",
-              "src/assets/js/owl.carousel.min.js",
-              "src/assets/js/plugins.js",
               "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/plugins.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/summernote.min.js",
               "src/assets/js/select2.full.min.js",
               "src/assets/js/smoothscroll.min.js",
-              "src/assets/js/summernote.min.js",
-              "src/assets/js/validator.min.js",
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/js/main.js",
+              "src/assets/js/modernizr-3.6.0.min.js",
+              "src/assets/js/validator.min.js"
             ]
           }
         },

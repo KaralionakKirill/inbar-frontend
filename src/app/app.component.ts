@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { BreakpointObserver } from '@angular/cdk/layout'
 import { ResolveEnd, ResolveStart, Router } from '@angular/router'
+import { ViewportScroller } from '@angular/common'
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   title: string = 'INBAR'
 
   constructor(private observer: BreakpointObserver,
-              private router: Router) {
+              private router: Router,
+              private viewportScroller: ViewportScroller,) {
     router.events.subscribe(e => {
       if (e instanceof ResolveStart) {
         this.isResolving = true
@@ -20,5 +22,9 @@ export class AppComponent {
         this.isResolving = false
       }
     })
+  }
+
+  toTop() {
+    this.viewportScroller.scrollToPosition([0, 0])
   }
 }

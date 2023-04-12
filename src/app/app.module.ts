@@ -9,6 +9,8 @@ import { NgOptimizedImage } from '@angular/common'
 import { FooterComponent } from './components/footer/footer.component'
 import { HomeComponent } from './components/home/home.component'
 import { AppRoutingModule } from './app-routing.module'
+import { NotFoundComponent } from './components/not-found/not-found.component'
+import { CategoryComponent } from './components/category/category.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AppRoutingModule } from './app-routing.module'
     NavbarComponent,
     LoadingComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent
   ],
   imports: [
     AppRoutingModule,
