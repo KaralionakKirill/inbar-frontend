@@ -11,6 +11,9 @@ import { HomeComponent } from './components/home/home.component'
 import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 import { CategoryComponent } from './components/category/category.component'
+import { RecipesComponent } from './components/recipes/recipes.component'
+import { InnerPageBannerComponent } from './components/inner-page-banner/inner-page-banner.component'
+import { RecipeComponent } from './components/recipe/recipe.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CategoryComponent } from './components/category/category.component'
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
-    CategoryComponent
+    CategoryComponent,
+    RecipesComponent,
+    InnerPageBannerComponent,
+    RecipeComponent
   ],
   imports: [
     AppRoutingModule,
