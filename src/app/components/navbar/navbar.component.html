@@ -18,7 +18,7 @@
                                 <a routerLink="/home">Home</a>
                             </li>
                             <li>
-                                <a routerLink="/category">Category</a>
+                                <a routerLink="/ingredients">Ingredients</a>
                             </li>
                             <li>
                                 <a routerLink="/recipes">Recipes</a>
@@ -103,7 +103,10 @@
           <input class="main-input-box" type="password" placeholder="Password" />
           <div class="inline-box mb-5 mt-4">
             <button class="btn-fill" type="submit" value="Login">Login</button>
-            <a href="#" class="btn-register"><i class="fas fa-user"></i>Register Here!</a>
+            <a routerLink="/registration" class="btn-register" data-dismiss="modal">
+              <i class="fas fa-user"></i>
+              Register Here!
+            </a>
           </div>
         </form>
       </div>

@@ -10,10 +10,11 @@ import { FooterComponent } from './components/footer/footer.component'
 import { HomeComponent } from './components/home/home.component'
 import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
-import { CategoryComponent } from './components/category/category.component'
+import { IngredientsComponent } from './components/category/ingredients.component'
 import { RecipesComponent } from './components/recipes/recipes.component'
 import { InnerPageBannerComponent } from './components/inner-page-banner/inner-page-banner.component'
 import { RecipeComponent } from './components/recipe/recipe.component'
+import { RegistrationComponent } from './components/registration/registration.component'
 
 @NgModule({
   declarations: [
@@ -23,10 +24,11 @@ import { RecipeComponent } from './components/recipe/recipe.component'
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
-    CategoryComponent,
+    IngredientsComponent,
     RecipesComponent,
     InnerPageBannerComponent,
-    RecipeComponent
+    RecipeComponent,
+    RegistrationComponent
   ],
   imports: [
     AppRoutingModule,
