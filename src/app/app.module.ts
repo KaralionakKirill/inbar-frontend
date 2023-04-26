@@ -15,6 +15,10 @@ import { RecipesComponent } from './components/recipes/recipes.component'
 import { InnerPageBannerComponent } from './components/inner-page-banner/inner-page-banner.component'
 import { RecipeComponent } from './components/recipe/recipe.component'
 import { RegistrationComponent } from './components/registration/registration.component'
+import { FormsModule } from '@angular/forms'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
+import { AuthInterceptor } from './interceptors/auth/auth.interceptor'
+import { UrlInterceptor } from './interceptors/url/url.interceptor'
 
 @NgModule({
   declarations: [
@@ -36,9 +40,22 @@ import { RegistrationComponent } from './components/registration/registration.co
     RouterOutlet,
     NgOptimizedImage,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

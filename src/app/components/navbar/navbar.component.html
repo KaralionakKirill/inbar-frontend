@@ -15,52 +15,31 @@
                     <nav class="site-nav">
                         <ul id="site-menu" class="site-menu">
                             <li>
-                                <a routerLink="/home">Home</a>
+                                <a routerLink="/home">Тренды</a>
                             </li>
                             <li>
-                                <a routerLink="/ingredients">Ingredients</a>
+                                <a routerLink="/ingredients">Ингредиенты</a>
                             </li>
                             <li>
-                                <a routerLink="/recipes">Recipes</a>
-                            </li>
-                            <li class="hide-on-desktop-menu">
-                                <a href="#">Pages</a>
-                                <ul class="dropdown-menu-col-1">
-                                    <li>
-                                        <a href="#">About</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Author</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Author Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Submit Recipe</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Login</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">404 Error</a>
-                                    </li>
-                                </ul>
+                                <a routerLink="/recipes">Коктейли</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-4 col-md-9 col-sm-8 col-8 d-flex align-items-center justify-content-end">
                     <div class="nav-action-elements-layout1">
-                        <ul>
+                        <ul *ngIf="isAuthenticated()">
                             <li>
                                 <button type="button" class="login-btn" data-toggle="modal" data-target="#myModal">
-                                    <i class="flaticon-profile"></i>Login
+                                    <i class="flaticon-profile"></i>Профиль
                                 </button>
                             </li>
+                        </ul>
+                        <ul *ngIf="!isAuthenticated()">
                             <li>
-                                <a href="#" class="fill-btn">
-                                    <i class="flaticon-plus-1"></i>SUBMIT RECIPE
-                                </a>
+                                <button type="button" class="login-btn" data-toggle="modal" data-target="#myModal">
+                                    <i class="flaticon-profile"></i>Войти
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -91,26 +70,30 @@
 <!-- Header Area End Here -->
 <!-- Modal Start-->
 <div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="title-default-bold mb-none">Login</div>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form class="login-form">
-          <input class="main-input-box" type="text" placeholder="Email" />
-          <input class="main-input-box" type="password" placeholder="Password" />
-          <div class="inline-box mb-5 mt-4">
-            <button class="btn-fill" type="submit" value="Login">Login</button>
-            <a routerLink="/registration" class="btn-register" data-dismiss="modal">
-              <i class="fas fa-user"></i>
-              Register Here!
-            </a>
-          </div>
-        </form>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="title-default-bold mb-none">INBAR</div>
+                <button #closeModal type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="information-message mb-4">
+                    Авторизируйтесь, для того чтобы получить дополнительные возможности
+                </div>
+                <form class="login-form" (ngSubmit)="onSignIn()">
+                    <input class="main-input-box" type="text" placeholder="E-mail" [(ngModel)]="email" name="email"/>
+                    <input class="main-input-box" type="password" placeholder="Пароль" [(ngModel)]="password"
+                           name="password"/>
+                    <div *ngIf="isError" class="error-message mb-4">{{errorMessage}}</div>
+                    <div class="inline-box mb-4">
+                        <button class="btn-fill" type="submit" value="Login">Войти</button>
+                        <a routerLink="/registration" class="btn-register" data-dismiss="modal">
+                            <i class="fas fa-user"></i>Зарегистрироваться
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- Modal End-->
