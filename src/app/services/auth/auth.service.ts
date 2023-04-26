@@ -34,11 +34,11 @@ export class AuthService {
     })
   }
 
-  register(email: string, password: string) {
+  register(email: string, password: string, firstname: string, lastname: string) {
     return new Observable<void>(observer => {
       this.http.post<{ token: string }>(
         'auth/register',
-        { email, password }
+        { email, password, firstname, lastname }
       ).subscribe({
         next: res => {
           localStorage.setItem(AppSettings.AUTH_TOKEN_KEY, res.token)

@@ -1,42 +1,44 @@
 <app-inner-page-banner [title]="'Регистрация'"></app-inner-page-banner>
 <!-- Registration Area Start Here -->
 <section class="login-page-wrap padding-top-80 padding-bottom-50">
-  <div class="container">
-    <div class="row gutters-60">
-      <div class="col-lg-12">
-        <div class="login-box-layout1">
-          <div class="section-heading heading-dark">
-            <h2 class="item-heading">REGISTRATION FORM</h2>
-          </div>
-          <form class="login-form">
-            <div class="row">
-              <div class="col-md-6">
-                <label class="mb-3">Firstname</label>
-                <input class="main-input-box" type="text" placeholder="" />
-              </div>
-              <div class="col-md-6">
-                <label class="mb-3">Lastname</label>
-                <input class="main-input-box" type="password" placeholder="" />
-              </div>
+    <div class="container">
+        <div class="row gutters-60">
+            <div class="col-lg-12">
+                <div class="login-box-layout1">
+                    <div class="section-heading heading-dark">
+                        <h2 class="item-heading">ФОРМА РЕГИСТРАЦИИ</h2>
+                    </div>
+                    <form class="login-form" (ngSubmit)="onRegister()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mb-3">Имя</label>
+                                <input class="main-input-box" type="text" [(ngModel)]="firstname" name="firstname"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mb-3">Фамилия</label>
+                                <input class="main-input-box" type="text" [(ngModel)]="lastname" name="lastname"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mb-3">E-mail</label>
+                                <input class="main-input-box" type="text" [(ngModel)]="email" name="email"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mb-3">Пароль</label>
+                                <input class="main-input-box" type="password" [(ngModel)]="password" name="password"/>
+                            </div>
+                        </div>
+                        <div *ngIf="isError" class="error-message mb-4">{{errorMessage}}</div>
+                        <div class="btn-area">
+                            <button class="btn-fill btn-primary" type="submit" value="Registration">
+                                Зарегистрироваться<i class="flaticon-next"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label class="mb-3">E-mail</label>
-                <input class="main-input-box" type="text" placeholder="" />
-              </div>
-              <div class="col-md-6">
-                <label class="mb-3">Password</label>
-                <input class="main-input-box" type="password" placeholder="" />
-              </div>
-            </div>
-            <div class="btn-area">
-              <button class="btn-fill btn-primary" type="submit" value="Login">Registration<i class="flaticon-next"></i></button>
-              <button class="btn-fill btn-dark" type="submit" value="Login">Login an Accont<i class="flaticon-next"></i></button>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <!-- Registration Area End Here -->
