@@ -26,34 +26,28 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-4 col-md-9 col-sm-8 col-8 d-flex align-items-center justify-content-end">
-                    <div class="nav-action-elements-layout1">
-                        <ul *ngIf="isAuthenticated()">
+                <div class="col-lg-4 col-md-9 col-sm-8 col-8 position-static">
+                    <nav class="site-nav-action">
+                        <ul *ngIf="isAuthenticated()" class="site-menu-action">
                             <li>
                                 <button type="button" class="login-btn" data-toggle="modal" data-target="#myModal">
                                     <i class="flaticon-profile"></i>Профиль
                                 </button>
-                            </li>
-                            <li>
-                                <a href="#" class="fill-btn">
-                                    <i class="flaticon-plus-1"></i>Создать Коктейль
-                                </a>
+                                <ul class="dropdown-menu-col-1">
+                                    <li>
+                                        <a routerLink="/home" (click)="logOut()">Выйти</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                        <ul *ngIf="!isAuthenticated()">
+                        <ul *ngIf="!isAuthenticated()" class="site-menu-action">
                             <li>
                                 <button type="button" class="login-btn" data-toggle="modal" data-target="#myModal">
                                     <i class="flaticon-profile"></i>Войти
                                 </button>
                             </li>
                         </ul>
-                    </div>
-                    <div class="mob-menu-open toggle-menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -63,7 +57,7 @@
             <div class="row">
                 <div class="col-lg-12 d-none d-lg-block">
                     <div class="site-logo-desktop">
-                        <a href="#" class="main-logo">
+                        <a routerLink="/home" class="main-logo">
                             <img src="../../../assets/img/inbarLogoDark.png" alt="Site Logo">
                         </a>
                     </div>

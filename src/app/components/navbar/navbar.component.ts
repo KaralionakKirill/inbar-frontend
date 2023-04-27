@@ -49,4 +49,8 @@ export class NavbarComponent {
       }
     })
   }
+
+  logOut() {
+    this.authService.logOut()
+  }
 }
