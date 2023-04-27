@@ -55,4 +55,20 @@ export class AuthService {
   logOut(): void {
     localStorage.clear()
   }
+
+  isAdmin(): string {
+    const claims = this.getToken().split('.')[1]
+    const decoded = JSON.parse(atob(claims))
+    return decoded['role'] && decoded['role'] === 'admin'
+  }
+
+  isBartender(): string {
+    const claims = this.getToken().split('.')[1]
+    const decoded = JSON.parse(atob(claims))
+    return decoded['role'] && decoded['role'] === 'bartender'
+  }
+
+  getToken(): string {
+    return localStorage.getItem(AppSettings.AUTH_TOKEN_KEY) || ''
+  }
 }

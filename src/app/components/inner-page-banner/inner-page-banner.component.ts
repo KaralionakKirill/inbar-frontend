@@ -30,7 +30,6 @@ export class InnerPageBannerComponent implements OnInit {
         })
       }
     }
-    console.log(this.links)
   }
 
   getValue(value: string) {
