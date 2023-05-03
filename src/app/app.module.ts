@@ -24,6 +24,8 @@ import { ImageModule } from 'primeng/image'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CalendarModule } from 'primeng/calendar'
 import { DropdownModule } from 'primeng/dropdown'
+import { ToastModule } from 'primeng/toast'
+import { MessageService } from 'primeng/api'
 
 @NgModule({
   declarations: [
@@ -53,9 +55,11 @@ import { DropdownModule } from 'primeng/dropdown'
     ImageModule,
     CalendarModule,
     DropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
   providers: [
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
