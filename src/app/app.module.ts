@@ -15,10 +15,15 @@ import { RecipesComponent } from './components/recipes/recipes.component'
 import { InnerPageBannerComponent } from './components/inner-page-banner/inner-page-banner.component'
 import { RecipeComponent } from './components/recipe/recipe.component'
 import { RegistrationComponent } from './components/registration/registration.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor'
 import { UrlInterceptor } from './interceptors/url/url.interceptor'
+import { CreateIngredientComponent } from './components/create-ingredient/create-ingredient.component'
+import { ImageModule } from 'primeng/image'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CalendarModule } from 'primeng/calendar'
+import { DropdownModule } from 'primeng/dropdown'
 
 @NgModule({
   declarations: [
@@ -32,17 +37,23 @@ import { UrlInterceptor } from './interceptors/url/url.interceptor'
     RecipesComponent,
     InnerPageBannerComponent,
     RecipeComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CreateIngredientComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterOutlet,
     NgOptimizedImage,
     RouterLink,
     RouterLinkActive,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ImageModule,
+    CalendarModule,
+    DropdownModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

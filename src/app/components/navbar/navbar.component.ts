@@ -45,7 +45,7 @@ export class NavbarComponent {
           .then(this.closeModal.nativeElement.click())
       },
       error: err => {
-        this.displayError(err.error.message)
+        if (err.status == '403') this.displayError('Пожалуйста, проверьте email и пароль.')
       }
     })
   }

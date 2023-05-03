@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { AppSettings } from '../../constants/app-settings'
+import { environment } from '../../constants/app-settings'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem(AppSettings.AUTH_TOKEN_KEY)
+    return !!localStorage.getItem(environment.authTokenKey)
   }
 
   authenticate(email: string, password: string) {
@@ -23,7 +23,7 @@ export class AuthService {
         { email, password }
       ).subscribe({
         next: res => {
-          localStorage.setItem(AppSettings.AUTH_TOKEN_KEY, res.token)
+          localStorage.setItem(environment.authTokenKey, res.token)
           observer.next()
           observer.complete()
         },
@@ -41,7 +41,7 @@ export class AuthService {
         { email, password, firstname, lastname }
       ).subscribe({
         next: res => {
-          localStorage.setItem(AppSettings.AUTH_TOKEN_KEY, res.token)
+          localStorage.setItem(environment.authTokenKey, res.token)
           observer.next()
           observer.complete()
         },
@@ -69,6 +69,6 @@ export class AuthService {
   }
 
   getToken(): string {
-    return localStorage.getItem(AppSettings.AUTH_TOKEN_KEY) || ''
+    return localStorage.getItem(environment.authTokenKey) || ''
   }
 }

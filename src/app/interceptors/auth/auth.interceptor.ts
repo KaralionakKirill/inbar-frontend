@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { AppSettings } from '../../constants/app-settings'
+import { environment } from '../../constants/app-settings'
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -10,13 +10,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request = request.clone({
-      headers: request.headers.set(AppSettings.AUTH_HEADER_KEY, this.getAuthHeaderValue())
+      headers: request.headers.set(environment.authHeaderKey, this.getAuthHeaderValue())
     })
     return next.handle(request)
   }
 
   getToken(): string {
-    return localStorage.getItem(AppSettings.AUTH_TOKEN_KEY) || ''
+    return localStorage.getItem(environment.authTokenKey) || ''
   }
 
   getAuthHeaderValue(): any {

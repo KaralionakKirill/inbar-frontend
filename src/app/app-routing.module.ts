@@ -6,6 +6,7 @@ import { IngredientsComponent } from './components/category/ingredients.componen
 import { RecipesComponent } from './components/recipes/recipes.component'
 import { RecipeComponent } from './components/recipe/recipe.component'
 import { RegistrationComponent } from './components/registration/registration.component'
+import { CreateIngredientComponent } from './components/create-ingredient/create-ingredient.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'recipes', component: RecipesComponent },
   { path: 'recipes/:id', component: RecipeComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'create/ingredient', component: CreateIngredientComponent },
   { path: '**', component: NotFoundComponent },
 ]
 
