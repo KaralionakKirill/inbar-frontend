@@ -1,0 +1,38 @@
+<app-inner-page-banner [title]="'Здесь ты найдешь больше информации'"></app-inner-page-banner>
+<!-- Single Shop Page Area Start Here -->
+<section class="single-shop-page-wrap padding-top-50 padding-bottom-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-12">
+                <div class="single-shop-figure-view">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <div class="tab-content">
+                                <div class="tab-img-container">
+                                    <img alt="single" src="{{getImageUrl()}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-12">
+                <div class="single-shop-content">
+                    <h2 class="item-title">{{ingredientInfo.name}}</h2>
+                    <ul class="entry-meta">
+                        <li>Крепость: <span>{{ingredientInfo.alcoholDegree.name}}</span></li>
+                        <li>Вкус: <span>{{ingredientInfo.taste ? ingredientInfo.taste.name : 'не указан'}}</span></li>
+                        <li>Тип: <span>{{ingredientInfo.type.name}}</span></li>
+                    </ul>
+                    <p class="item-details">{{ingredientInfo.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="related-product">
+            <div class="section-heading heading-dark">
+                <h2 class="item-heading">Коктейлей с ингредиентом</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single Shop Page Area End Here -->

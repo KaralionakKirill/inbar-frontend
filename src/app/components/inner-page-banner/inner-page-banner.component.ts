@@ -35,7 +35,7 @@ export class InnerPageBannerComponent implements OnInit {
   getValue(value: string) {
     let result
     switch (value) {
-      case 'ingredients': {
+      case 'ingredient-types': {
         result = 'Ингредиенты'
         break
       }

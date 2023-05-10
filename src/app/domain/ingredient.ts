@@ -5,6 +5,8 @@ export interface IngredientType {
 
   name: string
 
+  imageName: string
+
   ingredientsAmount: number
 }
 
@@ -28,4 +30,24 @@ export interface CreateIngredientResponse {
   id: number,
 
   name: string
+}
+
+export interface Ingredient {
+  id: number
+
+  name: string
+
+  imageId: number
+
+  type: IngredientType
+}
+
+export interface IngredientInfo extends Ingredient {
+  description: string
+
+  primaryIngredient: PrimaryIngredient
+
+  alcoholDegree: AlcoholDegree
+
+  taste: Taste | null
 }

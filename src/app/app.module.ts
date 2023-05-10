@@ -10,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component'
 import { HomeComponent } from './components/home/home.component'
 import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
-import { IngredientsComponent } from './components/category/ingredients.component'
+import { IngredientTypesComponent } from './components/ingredient-types/ingredient-types.component'
 import { RecipesComponent } from './components/recipes/recipes.component'
 import { InnerPageBannerComponent } from './components/inner-page-banner/inner-page-banner.component'
 import { RecipeComponent } from './components/recipe/recipe.component'
@@ -26,6 +26,8 @@ import { CalendarModule } from 'primeng/calendar'
 import { DropdownModule } from 'primeng/dropdown'
 import { ToastModule } from 'primeng/toast'
 import { MessageService } from 'primeng/api'
+import { IngredientsComponent } from './components/ingredients/ingredients.component'
+import { IngredientComponent } from './components/ingredient/ingredient.component'
 
 @NgModule({
   declarations: [
@@ -35,12 +37,14 @@ import { MessageService } from 'primeng/api'
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
-    IngredientsComponent,
+    IngredientTypesComponent,
     RecipesComponent,
     InnerPageBannerComponent,
     RecipeComponent,
     RegistrationComponent,
-    CreateIngredientComponent
+    CreateIngredientComponent,
+    IngredientsComponent,
+    IngredientComponent
   ],
   imports: [
     AppRoutingModule,

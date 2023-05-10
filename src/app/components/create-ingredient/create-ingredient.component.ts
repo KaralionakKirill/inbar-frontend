@@ -5,6 +5,7 @@ import { FileService } from '../../services/file/file.service'
 import { CompositionService } from '../../services/composition/composition.service'
 import { AlcoholDegree, PrimaryIngredient, Taste } from '../../domain/composition'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { InformationMessageService } from '../../services/information/information-message.service'
 
 @Component({
   selector: 'app-create-ingredient',
@@ -40,7 +41,8 @@ export class CreateIngredientComponent implements OnInit {
 
   constructor(private ingredientService: IngredientService,
               private compositionService: CompositionService,
-              private fileService: FileService) {
+              private fileService: FileService,
+              private informationService: InformationMessageService) {
   }
 
   ngOnInit(): void {
@@ -72,8 +74,6 @@ export class CreateIngredientComponent implements OnInit {
   }
 
   onCreate() {
-    console.log(this.form)
-    console.log(this.imageId)
     if (this.form.valid && this.imageId) {
       const request: CreateIngredientRequest = {
         name: this.form.get('name')!.value,
@@ -93,6 +93,9 @@ export class CreateIngredientComponent implements OnInit {
       this.ingredientService.createIngredient(request).subscribe({
         next: response => {
           this.form.reset()
+          this.imageUrl = '../../../assets/img/figure/upload-banner.jpg'
+          this.imageId = null
+          this.informationService.success(`Ингредиент ${response.name} успешно добавлен.`)
         }
       })
     }

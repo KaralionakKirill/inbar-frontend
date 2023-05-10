@@ -2,16 +2,21 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './components/home/home.component'
 import { NotFoundComponent } from './components/not-found/not-found.component'
-import { IngredientsComponent } from './components/category/ingredients.component'
+import { IngredientTypesComponent } from './components/ingredient-types/ingredient-types.component'
 import { RecipesComponent } from './components/recipes/recipes.component'
 import { RecipeComponent } from './components/recipe/recipe.component'
 import { RegistrationComponent } from './components/registration/registration.component'
 import { CreateIngredientComponent } from './components/create-ingredient/create-ingredient.component'
+import { IngredientsComponent } from './components/ingredients/ingredients.component'
+import { IngredientComponent } from './components/ingredient/ingredient.component'
+import { IngredientResolverService } from './resolvers/ingredient/ingredient-resolver.service'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'ingredient-types', component: IngredientTypesComponent },
   { path: 'ingredients', component: IngredientsComponent },
+  { path: 'ingredients/:id', component: IngredientComponent, resolve: { ingredientInfo: IngredientResolverService } },
   { path: 'recipes', component: RecipesComponent },
   { path: 'recipes/:id', component: RecipeComponent },
   { path: 'registration', component: RegistrationComponent },

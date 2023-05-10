@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { CreateIngredientRequest, CreateIngredientResponse } from '../../domain/ingredient'
+import { CreateIngredientRequest, CreateIngredientResponse, Ingredient, IngredientInfo } from '../../domain/ingredient'
 import { HttpClient } from '@angular/common/http'
 
 @Injectable({
@@ -15,5 +15,13 @@ export class IngredientService {
       'ingredients',
       request
     )
+  }
+
+  getIngredients() {
+    return this.http.get<Array<Ingredient>>('ingredients')
+  }
+
+  getIngredientInfo(id: number) {
+    return this.http.get<IngredientInfo>(`ingredients/${id}`)
   }
 }
