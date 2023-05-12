@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class IngredientService {
 
-  constructor(private http: HttpClient,) {
+  constructor(private http: HttpClient) {
   }
 
   createIngredient(request: CreateIngredientRequest) {

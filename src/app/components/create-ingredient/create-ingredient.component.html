@@ -44,7 +44,6 @@
                         <textarea placeholder="Введите описание"
                                   class="textarea form-control"
                                   name="message"
-                                  id="form-message"
                                   rows="7" cols="20"
                                   formControlName="description"></textarea>
                     </div>
@@ -60,7 +59,7 @@
                                 </li>
                             </ul>
                             <input id="file" type="file" (change)="onSelect($event)" #fileUpload accept="image/*">
-                            <button type="submit" class="btn-upload" (click)="fileUpload.click()">
+                            <button class="btn-upload" (click)="fileUpload.click()">
                                 <i class="fas fa-cloud-upload-alt"></i>ЗАГРУЗИТЬ ФОТО
                             </button>
                         </div>

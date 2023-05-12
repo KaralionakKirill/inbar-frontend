@@ -56,16 +56,22 @@ export class AuthService {
     localStorage.clear()
   }
 
-  isAdmin(): string {
+  isAdmin() {
     const claims = this.getToken().split('.')[1]
     const decoded = JSON.parse(atob(claims))
     return decoded['role'] && decoded['role'] === 'admin'
   }
 
-  isBartender(): string {
+  isBartender() {
     const claims = this.getToken().split('.')[1]
     const decoded = JSON.parse(atob(claims))
     return decoded['role'] && decoded['role'] === 'bartender'
+  }
+
+  getName(): string {
+    const claims = this.getToken().split('.')[1]
+    const decoded = JSON.parse(atob(claims))
+    return decoded['sub']
   }
 
   getToken(): string {

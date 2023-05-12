@@ -10,6 +10,8 @@ import { CreateIngredientComponent } from './components/create-ingredient/create
 import { IngredientsComponent } from './components/ingredients/ingredients.component'
 import { IngredientComponent } from './components/ingredient/ingredient.component'
 import { IngredientResolverService } from './resolvers/ingredient/ingredient-resolver.service'
+import { ProfileComponent } from './components/profile/profile.component'
+import { UserResolverService } from './resolvers/user/user-resolver.service'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'recipes/:id', component: RecipeComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'create/ingredient', component: CreateIngredientComponent },
+  { path: 'profile', component: ProfileComponent, resolve: { userInfo: UserResolverService } },
   { path: '**', component: NotFoundComponent },
 ]
 

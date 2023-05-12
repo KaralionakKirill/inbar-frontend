@@ -1,0 +1,141 @@
+<app-inner-page-banner [title]="'Ваш профиль'"></app-inner-page-banner>
+<!-- Single Author Area Start Here -->
+<section class="single-author-page-wrap padding-top-18 padding-bottom-18">
+    <div class="container">
+        <div class="row gutters-60">
+            <div class="col-lg-8">
+                <div class="author-info">
+                    <div class="media">
+                        <div class="author-avatar">
+                            <img src="{{avatarUrl}}" alt="Blog Author"
+                                 class="rounded-circle media-img-auto">
+                        </div>
+                        <div class="media-body">
+                            <h2 class="author-title">{{userInfo.lastname}} {{userInfo.lastname}}</h2>
+                            <div class="author-designation">{{userInfo.email}}</div>
+                            <p>{{userInfo.aboutMe}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-heading heading-dark">
+                    <h2 class="item-heading">36 RECIPES</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="product-box-layout">
+                            <figure class="item-figure">
+                                <a href="#">
+                                    <img src="../../../assets/img/product/product50.jpg" alt="Product">
+                                </a>
+                            </figure>
+                            <div class="item-content">
+                                <span class="sub-title">CHICKEN</span>
+                                <h3 class="item-title">
+                                    <a href="#">Tomatoes Stuffed with Foie and Chanterelles</a>
+                                </h3>
+                                <ul class="item-rating">
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-empty"><i class="fas fa-star"></i></li>
+                                    <li><span>9<span> / 10</span></span></li>
+                                </ul>
+                                <p>More off this less hello salamander lied porpoise much over tightly circa
+                                    outside crud mightily rigorouse. </p>
+                                <ul class="entry-meta">
+                                    <li><a href="#"><i class="fas fa-clock"></i>15 Mins</a></li>
+                                    <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
+                                    <li><a href="#"><i class="fas fa-heart"></i><span>02</span> Likes</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pagination-layout">
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
+                <div class="widget">
+                    <div class="section-heading heading-dark">
+                        <h3 class="item-heading">Редактировать профиль</h3>
+                    </div>
+                    <div class="widget-follow-us">
+                        <ul>
+                            <li class="single-item">
+                                <input id="file" type="file" (change)="onSelect($event)" #fileUpload accept="image/*">
+                                <button type="button" (click)="fileUpload.click()">Изменить аватар</button>
+                            </li>
+                            <li class="single-item">
+                                <button type="button" data-toggle="modal" data-target="#userModal">Редактировать</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single Author Area End Here -->
+<!-- Update User Modal Start-->
+<div class="modal fade" id="userModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="title-default-bold mb-none">Редактирование профиля</div>
+                <button #closeUserModal type="button" class="close" data-dismiss="modal" (click)="onClose()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="user-form" [formGroup]="form" novalidate>
+                    <div class="form-group">
+                        <input class="main-input-box form-control mb-2"
+                               type="text"
+                               placeholder="Имя"
+                               formControlName="firstname"/>
+                        <div class="error-message"
+                             *ngIf="form.controls['firstname'].invalid && form.controls['firstname'].touched">
+                            Не указано имя
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="main-input-box form-control mb-2"
+                               type="text"
+                               placeholder="Фамилия"
+                               formControlName="lastname"/>
+                        <div class="error-message"
+                             *ngIf="form.controls['lastname'].invalid && form.controls['lastname'].touched">
+                            Не указана фамилия
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="О себе"
+                                  class="textarea form-control mb-3"
+                                  name="message"
+                                  id="form-message"
+                                  rows="7" cols="20"
+                                  formControlName="aboutMe"></textarea>
+                    </div>
+                    <div class="inline-box">
+                        <button class="btn-fill" type="submit" (click)="onUpdate()">Редактировать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Update User Modal End-->

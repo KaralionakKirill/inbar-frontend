@@ -14,7 +14,7 @@ export class InformationMessageService {
     message: string,
     severity: ToastMessageSeverity,
     key: ToastMessageKeyComponent,
-    summary: string = 'Service Message'
+    summary: string = 'Информационное сообщение'
   ) {
     this.messageService.add({
       severity: severity,

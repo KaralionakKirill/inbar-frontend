@@ -28,6 +28,7 @@ import { ToastModule } from 'primeng/toast'
 import { MessageService } from 'primeng/api'
 import { IngredientsComponent } from './components/ingredients/ingredients.component'
 import { IngredientComponent } from './components/ingredient/ingredient.component'
+import { ProfileComponent } from './components/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { IngredientComponent } from './components/ingredient/ingredient.componen
     RegistrationComponent,
     CreateIngredientComponent,
     IngredientsComponent,
-    IngredientComponent
+    IngredientComponent,
+    ProfileComponent
   ],
   imports: [
     AppRoutingModule,
