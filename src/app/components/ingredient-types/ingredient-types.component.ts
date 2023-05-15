@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { CompositionService } from '../../services/composition/composition.service'
+import { CommonService } from '../../services/common/common.service'
 import { IngredientType } from '../../domain/ingredient'
 
 @Component({
@@ -11,14 +11,16 @@ export class IngredientTypesComponent implements OnInit {
   ingredientTypes: Array<IngredientType> = []
   ingredientsAmount = 0
 
-  constructor(private compositionService: CompositionService) {
+  constructor(private compositionService: CommonService) {
   }
 
   ngOnInit(): void {
     this.compositionService.getIngredientTypes().subscribe({
-      next: response => this.ingredientTypes = response
+      next: response =>{
+        this.ingredientTypes = response
+        response.forEach(type => this.ingredientsAmount += type.ingredientsAmount)
+      }
     })
-    this.ingredientTypes.forEach(type => this.ingredientsAmount += type.ingredientsAmount)
   }
 
 }

@@ -177,7 +177,7 @@
             <div *ngFor="let ingredient of ingredients" class="col-lg-4 col-md-6 col-sm-6 col-12">
                 <div class="product-box-layout">
                     <figure class="item-figure">
-                        <a href="/ingredients/{{ingredient.id}}">
+                        <a routerLink="/ingredients/{{ingredient.id}}">
                             <div class="img-container">
                                 <img src="{{getImageUrl(ingredient.imageId)}}" alt="Ingredient">
                             </div>

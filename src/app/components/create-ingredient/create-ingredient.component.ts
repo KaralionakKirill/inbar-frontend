@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { CreateIngredientRequest, IngredientType } from '../../domain/ingredient'
+import { CreateIngredientRequest, IngredientGroup, IngredientType } from '../../domain/ingredient'
 import { IngredientService } from '../../services/ingredient/ingredient.service'
 import { FileService } from '../../services/file/file.service'
-import { CompositionService } from '../../services/composition/composition.service'
-import { AlcoholDegree, PrimaryIngredient, Taste } from '../../domain/composition'
+import { CommonService } from '../../services/common/common.service'
+import { AlcoholDegree, PrimaryIngredient, Taste } from '../../domain/common'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { InformationMessageService } from '../../services/information/information-message.service'
 
@@ -19,6 +19,8 @@ export class CreateIngredientComponent implements OnInit {
 
   ingredientTypes: Array<IngredientType> = []
 
+  ingredientGroups: Array<IngredientGroup> = []
+
   primaryIngredients: Array<PrimaryIngredient> = []
 
   tastes: Array<Taste> = []
@@ -32,30 +34,35 @@ export class CreateIngredientComponent implements OnInit {
 
     type: new FormControl<IngredientType | null>(null, Validators.required),
 
+    group: new FormControl<IngredientGroup | null>(null, Validators.required),
+
     primaryIngredient: new FormControl<IngredientType | null>(null, Validators.required),
 
     alcoholDegree: new FormControl<AlcoholDegree | null>(null, Validators.required),
 
-    taste: new FormControl<Taste | null>(null),
+    taste: new FormControl<Taste | null>(null, Validators.required)
   })
 
   constructor(private ingredientService: IngredientService,
-              private compositionService: CompositionService,
+              private commonService: CommonService,
               private fileService: FileService,
               private informationService: InformationMessageService) {
   }
 
   ngOnInit(): void {
-    this.compositionService.getIngredientTypes().subscribe({
+    this.commonService.getIngredientTypes().subscribe({
       next: response => this.ingredientTypes = response
     })
-    this.compositionService.getPrimaryIngredients().subscribe({
+    this.commonService.getIngredientGroups().subscribe({
+      next: response => this.ingredientGroups = response
+    })
+    this.commonService.getPrimaryIngredients().subscribe({
       next: response => this.primaryIngredients = response
     })
-    this.compositionService.getTastes().subscribe({
+    this.commonService.getTastes().subscribe({
       next: response => this.tastes = response
     })
-    this.compositionService.getAlcoholDegrees().subscribe({
+    this.commonService.getAlcoholDegrees().subscribe({
       next: response => this.alcoholDegrees = response
     })
   }
@@ -83,6 +90,8 @@ export class CreateIngredientComponent implements OnInit {
         imageId: this.imageId!,
 
         type: this.form.get('type')!.value,
+
+        group: this.form.get('group')!.value,
 
         primaryIngredient: this.form.get('primaryIngredient')!.value,
 

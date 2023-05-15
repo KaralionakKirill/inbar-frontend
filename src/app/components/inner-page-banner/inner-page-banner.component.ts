@@ -1,57 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'app-inner-page-banner',
   templateUrl: './inner-page-banner.component.html',
   styleUrls: ['./inner-page-banner.component.css']
 })
-export class InnerPageBannerComponent implements OnInit {
+export class InnerPageBannerComponent {
 
   @Input() title!: string
-
-  links: { link: string, value: string }[] = []
-
-  constructor(private router: Router) {
-  }
-
-  ngOnInit(): void {
-    const urls = this.router.url.split('/').filter(value => value !== '')
-    for (let i = 0; i < urls.length; i++) {
-      if (i == 0) {
-        this.links.push({
-          link: `/${urls[i]}`,
-          value: this.getValue(urls[i])
-        })
-      } else {
-        this.links.push({
-          link: `${this.links[i - 1]}/${urls[i]}`,
-          value: this.getValue(urls[i])
-        })
-      }
-    }
-  }
-
-  getValue(value: string) {
-    let result
-    switch (value) {
-      case 'ingredient-types': {
-        result = 'Ингредиенты'
-        break
-      }
-      case 'recipes': {
-        result = 'Рецепты'
-        break
-      }
-      case 'registration': {
-        result = 'Регистрация'
-        break
-      }
-      default: {
-        result = value
-      }
-    }
-    return result
-  }
+  @Input() subTitle: string | null = null
+  @Input() link: string | null = null
 
 }

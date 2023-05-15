@@ -15,3 +15,15 @@ export interface Taste {
 
   name: string
 }
+
+export interface CookingMethod {
+  id: number
+
+  name: string
+}
+
+export interface Measure {
+  id: number
+
+  name: string
+}

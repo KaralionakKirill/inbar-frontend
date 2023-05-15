@@ -12,7 +12,7 @@ export class IngredientService {
 
   createIngredient(request: CreateIngredientRequest) {
     return this.http.post<CreateIngredientResponse>(
-      'ingredients',
+      'ingredients/new',
       request
     )
   }

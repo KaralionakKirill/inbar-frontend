@@ -12,6 +12,7 @@ import { IngredientComponent } from './components/ingredient/ingredient.componen
 import { IngredientResolverService } from './resolvers/ingredient/ingredient-resolver.service'
 import { ProfileComponent } from './components/profile/profile.component'
 import { UserResolverService } from './resolvers/user/user-resolver.service'
+import { CreateCocktailComponent } from './components/create-cocktail/create-cocktail.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'recipes/:id', component: RecipeComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'create/ingredient', component: CreateIngredientComponent },
+  { path: 'create/cocktail', component: CreateCocktailComponent },
   { path: 'profile', component: ProfileComponent, resolve: { userInfo: UserResolverService } },
   { path: '**', component: NotFoundComponent },
 ]

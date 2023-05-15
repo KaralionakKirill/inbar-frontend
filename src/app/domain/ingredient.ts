@@ -1,4 +1,4 @@
-import { AlcoholDegree, PrimaryIngredient, Taste } from './composition'
+import { AlcoholDegree, PrimaryIngredient, Taste } from './common'
 
 export interface IngredientType {
   id: number
@@ -10,6 +10,18 @@ export interface IngredientType {
   ingredientsAmount: number
 }
 
+export interface IngredientGroup {
+  id: number
+
+  name: string
+
+  cocktailBaseName: string | null
+
+  cocktail_base: boolean
+
+  instrument: boolean
+}
+
 export interface CreateIngredientRequest {
   name: string
 
@@ -19,11 +31,13 @@ export interface CreateIngredientRequest {
 
   type: IngredientType
 
+  group: IngredientGroup
+
   primaryIngredient: PrimaryIngredient
 
   alcoholDegree: AlcoholDegree
 
-  taste: Taste | null
+  taste: Taste
 }
 
 export interface CreateIngredientResponse {

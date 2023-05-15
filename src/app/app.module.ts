@@ -29,6 +29,8 @@ import { MessageService } from 'primeng/api'
 import { IngredientsComponent } from './components/ingredients/ingredients.component'
 import { IngredientComponent } from './components/ingredient/ingredient.component'
 import { ProfileComponent } from './components/profile/profile.component'
+import { CreateCocktailComponent } from './components/create-cocktail/create-cocktail.component'
+import { CheckboxModule } from 'primeng/checkbox'
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ProfileComponent } from './components/profile/profile.component'
     CreateIngredientComponent,
     IngredientsComponent,
     IngredientComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateCocktailComponent
   ],
   imports: [
     AppRoutingModule,
@@ -62,7 +65,8 @@ import { ProfileComponent } from './components/profile/profile.component'
     CalendarModule,
     DropdownModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    CheckboxModule
   ],
   providers: [
     MessageService,
