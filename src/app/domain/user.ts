@@ -23,7 +23,7 @@ export interface UpdateUserRequest{
 }
 
 export enum UserRole{
-  USER = 'Пользователь',
-  ADMIN = 'Администратор',
-  BARTENDER = 'Бармен'
+  USER = 'user',
+  ADMIN = 'admin',
+  BARTENDER = 'bartender'
 }

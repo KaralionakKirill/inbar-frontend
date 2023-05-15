@@ -43,6 +43,8 @@ export class CreateIngredientComponent implements OnInit {
     taste: new FormControl<Taste | null>(null, Validators.required)
   })
 
+  submit = false
+
   constructor(private ingredientService: IngredientService,
               private commonService: CommonService,
               private fileService: FileService,
@@ -81,6 +83,7 @@ export class CreateIngredientComponent implements OnInit {
   }
 
   onCreate() {
+    this.submit = true
     if (this.form.valid && this.imageId) {
       const request: CreateIngredientRequest = {
         name: this.form.get('name')!.value,
@@ -104,9 +107,18 @@ export class CreateIngredientComponent implements OnInit {
           this.form.reset()
           this.imageUrl = '../../../assets/img/figure/upload-banner.jpg'
           this.imageId = null
+          this.submit = false
           this.informationService.success(`Ингредиент ${response.name} успешно добавлен.`)
         }
       })
     }
+  }
+
+  dropdownsValid() {
+    return this.form.controls['type'].invalid ||
+      this.form.controls['group'].invalid ||
+      this.form.controls['primaryIngredient'].invalid ||
+      this.form.controls['taste'].invalid ||
+      this.form.controls['alcoholDegree'].invalid
   }
 }

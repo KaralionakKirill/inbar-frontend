@@ -2,6 +2,10 @@ input[type=file] {
     display: none;
 }
 
+:host div.error-message {
+    color: #ed4337;
+}
+
 ::ng-deep .p-dropdown {
     width: 350px;
     border-radius: 0 !important;

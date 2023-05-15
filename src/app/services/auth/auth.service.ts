@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { environment } from '../../constants/app-settings'
+import { UserRole } from '../../domain/user'
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +35,11 @@ export class AuthService {
     })
   }
 
-  register(email: string, password: string, firstname: string, lastname: string) {
+  register(email: string, password: string, firstname: string, lastname: string, professional: boolean) {
     return new Observable<void>(observer => {
       this.http.post<{ token: string }>(
         'auth/register',
-        { email, password, firstname, lastname }
+        { email, password, firstname, lastname, professional }
       ).subscribe({
         next: res => {
           localStorage.setItem(environment.authTokenKey, res.token)
@@ -46,7 +47,7 @@ export class AuthService {
           observer.complete()
         },
         error: (err) => {
-          observer.error(err.error.message)
+          observer.error(err)
         }
       })
     })
@@ -59,13 +60,13 @@ export class AuthService {
   isAdmin() {
     const claims = this.getToken().split('.')[1]
     const decoded = JSON.parse(atob(claims))
-    return decoded['role'] && decoded['role'] === 'admin'
+    return decoded['role'] && decoded['role'] === UserRole.ADMIN
   }
 
   isBartender() {
     const claims = this.getToken().split('.')[1]
     const decoded = JSON.parse(atob(claims))
-    return decoded['role'] && decoded['role'] === 'bartender'
+    return decoded['role'] && decoded['role'] === UserRole.BARTENDER
   }
 
   getName(): string {

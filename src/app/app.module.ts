@@ -31,6 +31,7 @@ import { IngredientComponent } from './components/ingredient/ingredient.componen
 import { ProfileComponent } from './components/profile/profile.component'
 import { CreateCocktailComponent } from './components/create-cocktail/create-cocktail.component'
 import { CheckboxModule } from 'primeng/checkbox'
+import { ToggleButtonModule } from 'primeng/togglebutton'
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { CheckboxModule } from 'primeng/checkbox'
     DropdownModule,
     ReactiveFormsModule,
     ToastModule,
-    CheckboxModule
+    CheckboxModule,
+    ToggleButtonModule
   ],
   providers: [
     MessageService,

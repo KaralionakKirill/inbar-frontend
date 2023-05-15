@@ -1,3 +1,22 @@
 :host div.error-message {
     color: #ed4337;
 }
+
+::ng-deep .p-button {
+    border-radius: 4px;
+}
+
+::ng-deep .p-togglebutton.p-button.p-highlight {
+    border-color: #ff4a52;
+    background: #ff4a52;
+}
+
+::ng-deep .p-togglebutton.p-button.p-highlight:hover {
+    border-color: #ff4a52;
+    background: #ff4a52;
+}
+
+::ng-deep .p-button:focus {
+    border-color: #ff4a52;
+    box-shadow: 0 0 0 0.2rem #ff4A5233;
+}

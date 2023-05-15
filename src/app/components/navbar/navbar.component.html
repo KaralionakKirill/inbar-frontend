@@ -34,10 +34,10 @@
                                     <i class="flaticon-profile"></i>Профиль
                                 </button>
                                 <ul class="dropdown-menu-col-1">
-                                    <li>
+                                    <li *ngIf="adminOrBartender()">
                                         <a routerLink="/create/ingredient">Добавить ингредиент</a>
                                     </li>
-                                    <li>
+                                    <li *ngIf="adminOrBartender()">
                                         <a routerLink="/create/cocktail">Добавить коктейль</a>
                                     </li>
                                     <li>
@@ -85,13 +85,32 @@
                 <div class="information-message mb-4">
                     Авторизируйтесь, для того чтобы получить дополнительные возможности
                 </div>
-                <form class="login-form" (ngSubmit)="onSignIn()">
-                    <input class="main-input-box" type="text" placeholder="E-mail" [(ngModel)]="email" name="email"/>
-                    <input class="main-input-box" type="password" placeholder="Пароль" [(ngModel)]="password"
-                           name="password"/>
-                    <div *ngIf="isError" class="error-message mb-4">{{errorMessage}}</div>
-                    <div class="inline-box mb-4">
-                        <button class="btn-fill" type="submit" value="Login">Войти</button>
+                <form class="login-form" [formGroup]="form">
+                    <div class="form-group">
+                        <input class="main-input-box"
+                               type="text"
+                               placeholder="E-mail"
+                               name="email"
+                               formControlName="email"/>
+                        <div class="error-message" *ngIf="form.controls['email'].invalid && submit">
+                            E-mail некорректный
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="main-input-box"
+                               type="password"
+                               placeholder="Пароль"
+                               name="password"
+                               formControlName="password"/>
+                        <div class="error-message" *ngIf="form.controls['password'].invalid && submit">
+                            Пароль некорректный
+                        </div>
+                    </div>
+                    <div class="error-message mb-3" *ngIf="errorMessage !== null && submit">
+                        {{errorMessage}}
+                    </div>
+                    <div class="inline-box">
+                        <button class="btn-fill" type="submit" (click)="onSignIn()">Войти</button>
                         <a routerLink="/registration" class="btn-register" data-dismiss="modal">
                             <i class="fas fa-user"></i>Зарегистрироваться
                         </a>
