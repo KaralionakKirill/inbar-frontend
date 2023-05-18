@@ -1,25 +1,29 @@
+import { Cocktail } from './cocktail'
+
 export interface UserInfo{
-  firstname: string,
+  firstname: string
 
-  lastname: string,
+  lastname: string
 
-  email: string,
+  email: string
 
-  avatarId: number | null,
+  avatarId: number | null
 
-  aboutMe: string | null,
+  aboutMe: string | null
 
   role: UserRole
+
+  cocktails: Array<Cocktail>
 }
 
 export interface UpdateUserRequest{
-  firstname: string | null,
+  firstname: string | null
 
-  lastname: string | null,
+  lastname: string | null
 
-  avatarId: number | null,
+  avatarId: number | null
 
-  aboutMe: string | null,
+  aboutMe: string | null
 }
 
 export enum UserRole{

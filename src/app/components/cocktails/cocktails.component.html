@@ -1,4 +1,4 @@
-<app-inner-page-banner [title]="'Узнай больше о ингредиентах'"></app-inner-page-banner>
+<app-inner-page-banner [title]="'Найди свой любимый коктейль'"></app-inner-page-banner>
 <!-- Recipe Area Start Here -->
 <section class="recipe-without-sidebar-wrap padding-top-18 padding-bottom-18">
     <div class="container">
@@ -174,20 +174,42 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let ingredient of ingredients" class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <div *ngFor="let cocktail of cocktails" class="col-lg-4 col-md-6 col-sm-6 col-12">
                 <div class="product-box-layout">
                     <figure class="item-figure">
-                        <a routerLink="/ingredients/{{ingredient.id}}">
+                        <a routerLink="/cocktails/{{cocktail.id}}">
                             <div class="img-container">
-                                <img src="{{getImageUrl(ingredient.imageId)}}" alt="Ingredient">
+                                <img src="{{getImageUrl(cocktail.imageId)}}" alt="Ingredient">
                             </div>
                         </a>
                     </figure>
                     <div class="item-content">
-                        <span class="sub-title">{{getIngredientType(ingredient.type)}}</span>
+                        <span class="sub-title">{{getCocktailGroup(cocktail.group)}}</span>
                         <h3 class="item-title">
-                            <a routerLink="/ingredients/{{ingredient.id}}">{{ingredient.name}}</a>
+                            <a routerLink="/cocktails/{{cocktail.id}}">{{cocktail.name}}</a>
                         </h3>
+                        <ul class="item-rating">
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-empty"><i class="fas fa-star"></i></li>
+                            <li><span>9<span> / 10</span></span></li>
+                        </ul>
+                        <ul class="entry-meta">
+                            <li *ngIf="cocktail.author">
+                                <a href="#">
+                                    <i class="fas fa-user"></i>
+                                    <span>{{cocktail.author.firstname}} {{cocktail.author.lastname}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-heart"></i>
+                                    <span>2</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

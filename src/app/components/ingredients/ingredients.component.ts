@@ -10,7 +10,6 @@ import { FileService } from '../../services/file/file.service'
 })
 export class IngredientsComponent implements OnInit {
   ingredients: Array<Ingredient> = []
-  ingredientsAmount = 0
 
   constructor(private ingredientService: IngredientService,
               private fileService: FileService) {

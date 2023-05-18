@@ -2082,7 +2082,7 @@ ul {
 
 .inner-page-banner {
     display: block;
-    padding: 9rem 0;
+    padding: 6rem 0;
     position: relative;
 }
 
@@ -7498,9 +7498,18 @@ ul {
 }
 
 .single-recipe-layout2 .making-elements-wrap .nutrition-wrap {
+    height: 100%;
     background-color: #fef1f2;
     padding: 35px 40px;
     margin-bottom: 30px;
+}
+
+.single-recipe-layout2 .making-elements-wrap .nutrition-wrap.grey {
+    background-color: #f8f8f8;
+}
+
+.single-recipe-layout2 .making-elements-wrap .nutrition-wrap.pink {
+    background-color: #fef1f2;
 }
 
 .single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list {
@@ -7530,6 +7539,24 @@ ul {
 
 .single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list li .nutrition-name {
     color: #111111;
+}
+
+.single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list li .nutrition-name a {
+    color: #909090;
+    transition: all 0.3s ease-out;
+}
+
+.single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list li .nutrition-name a span {
+    color: #111111;
+    transition: all 0.3s ease-out;
+}
+
+.single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list li .nutrition-name a:hover {
+    color: #ff4a52;
+}
+
+.single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list li .nutrition-name a:hover span {
+    color: #ff4a52;
 }
 
 .single-recipe-layout2 .making-elements-wrap .nutrition-wrap .nutrition-list li .nutrition-value {

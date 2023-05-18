@@ -1,0 +1,177 @@
+<app-inner-page-banner [title]="'Коктейль'"></app-inner-page-banner>
+<!-- Single Recipe Area Start Here -->
+<section class="single-recipe-main-banner">
+    <div class="rc-carousel nav-control-layout4">
+        <div class="item-figure">
+            <!--  1920 624    -->
+            <div class="img-container">
+                <img src="{{getImageUrl()}}" alt="Banner">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single Recipe Main Banner Area End Here -->
+<!-- Single Recipe Without Sidebar Area Start Here -->
+<section class="single-recipe-wrap-layout2 padding-bottom-80">
+    <div class="container">
+        <div class="single-recipe-layout2">
+            <div class="ctg-name">{{getCocktailGroup()}}</div>
+            <h2 class="item-title">{{cocktailInfo.name}}</h2>
+            <div class="d-flex align-items-center justify-content-between flex-wrap mb-5">
+                <ul class="entry-meta">
+                    <li class="single-meta">
+                        <a href="#"><i class="far fa-calendar-alt"></i>
+                            {{cocktailInfo.modifiedTs | date:'dd.MM.yyyy HH:mm:ss'}}
+                        </a>
+                    </li>
+                    <li class="single-meta" *ngIf="cocktailInfo.author">
+                        <a href="#">
+                            <i class="fas fa-user"></i>
+                            <span>{{cocktailInfo.author.firstname}} {{cocktailInfo.author.lastname}}</span>
+                        </a>
+                    </li>
+                    <li class="single-meta">
+                        <ul class="item-rating">
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-empty"><i class="fas fa-star"></i></li>
+                            <li><span>9<span> / 10</span></span></li>
+                        </ul>
+                    </li>
+                    <li class="single-meta">
+                        <a href="#"><i class="fas fa-heart"></i>
+                            <span>2</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="action-item">
+                    <li>
+                        <button><i class="fas fa-print"></i></button>
+                    </li>
+                    <li>
+                        <button><i class="fas fa-expand-arrows-alt"></i></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="section-heading3 heading-dark">
+                <h2 class="item-heading">Рецепт коктейля</h2>
+            </div>
+            <p class="item-description">{{cocktailInfo.cookingSteps}}</p>
+            <div class="making-elements-wrap mb-4">
+                <div class="row">
+                    <div class="col-xl-6 col-12">
+                        <div class="nutrition-wrap grey">
+                            <h3 class="item-title">
+                                <i class="fas fa-list-ul"></i>Ингредиенты
+                            </h3>
+                            <ul class="nutrition-list">
+                                <li *ngFor="let ingredient of ingredients">
+                                    <div class="nutrition-name">
+                                        <a routerLink="/ingredients/{{ingredient.ingredient.id}}">
+                                            <span>{{ingredient.ingredient.name}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="nutrition-value">{{ingredient.value}}{{ingredient.measure.name}}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-12">
+                        <div class="nutrition-wrap pink">
+                            <h3 class="item-title">
+                                <i class="fas fa-info"></i>Необходимые предметы
+                            </h3>
+                            <ul class="nutrition-list">
+                                <li *ngFor="let instrument of instruments">
+                                    <div class="nutrition-name">
+                                        <a routerLink="/ingredients/{{instrument.ingredient.id}}">
+                                            <span>{{instrument.ingredient.name}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="nutrition-value">{{instrument.value}}{{instrument.measure.name}}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-heading3 heading-dark">
+                <h2 class="item-heading">Что рассказать гостю о коктейле?</h2>
+            </div>
+            <p class="item-description">{{cocktailInfo.aboutCocktail}}</p>
+            <div class="recipe-reviews">
+                <div class="section-heading3 heading-dark">
+                    <h2 class="item-heading">КОММЕНТАРИИ</h2>
+                </div>
+                <div class="avarage-rating-wrap">
+                    <div class="avarage-rating">Средний рейтинг:
+                        <span class="rating-icon-wrap">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                        <span class="rating-number">(5)</span>
+                    </div>
+                    <div class="total-reviews">Всего комментариев:<span class="review-number">(02)</span></div>
+                </div>
+                <ul>
+                    <li class="reviews-single-item">
+                        <div class="media media-none--xs">
+                            <img src="../../../assets/img/blog/comment1.jpg" alt="Comment" class="media-img-auto">
+                            <div class="media-body">
+                                <h4 class="comment-title">Liza Zaman</h4>
+                                <span class="post-date">September 27, 2018</span>
+                                <p>Absolutely great recipe. I cooked it for my kids and they loved it, even
+                                    asked for more, can you believe it?</p>
+                                <ul class="item-rating">
+                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="single-item star-empty"><i class="fas fa-star"></i></li>
+                                    <li class="single-item"><span>9<span> / 10</span></span></li>
+                                </ul>
+                                <a href="#" class="item-btn">REPLY<i class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="leave-review">
+                <div class="section-heading3 heading-dark">
+                    <h2 class="item-heading">ОСТАВИТЬ КОММЕНТАРИЙ</h2>
+                </div>
+                <div class="rate-wrapper">
+                    <div class="rate-label">Рейтинг</div>
+                    <div class="rate">
+                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <form class="leave-form-box">
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            <label>Комментарий :</label>
+                            <textarea placeholder=""
+                                      class="textarea form-control"
+                                      name="message" rows="7" cols="20"
+                                      data-error="Message field is required" required></textarea>
+                        </div>
+                        <div class="col-12 form-group mb-0">
+                            <button type="submit" class="item-btn">ОСТАВИТЬ КОММЕНТАРИЙ</button>
+                        </div>
+                    </div>
+                    <div class="form-response"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single Recipe Area End Here -->

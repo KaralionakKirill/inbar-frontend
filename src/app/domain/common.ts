@@ -27,3 +27,9 @@ export interface Measure {
 
   name: string
 }
+
+export enum Status {
+  PENDING,
+  REVIEWED,
+  DECLINED
+}

@@ -9,7 +9,7 @@
                         <div class="col-lg-12 col-12">
                             <div class="tab-content">
                                 <div class="tab-img-container">
-                                    <img alt="single" src="{{getImageUrl()}}">
+                                    <img alt="single" src="{{getImageUrl(ingredientInfo.imageId)}}">
                                 </div>
                             </div>
                         </div>
@@ -21,16 +21,57 @@
                     <h2 class="item-title">{{ingredientInfo.name}}</h2>
                     <ul class="entry-meta">
                         <li>Крепость: <span>{{ingredientInfo.alcoholDegree.name}}</span></li>
-                        <li>Вкус: <span>{{ingredientInfo.taste ? ingredientInfo.taste.name : 'не указан'}}</span></li>
+                        <li>Вкус: <span>{{ingredientInfo.taste}}</span></li>
                         <li>Тип: <span>{{ingredientInfo.type.name}}</span></li>
                     </ul>
                     <p class="item-details">{{ingredientInfo.description}}</p>
                 </div>
             </div>
         </div>
-        <div class="related-product">
+        <div class="related-product" *ngIf="relatedCocktailsExist()">
             <div class="section-heading heading-dark">
-                <h2 class="item-heading">Коктейлей с ингредиентом</h2>
+                <h2 class="item-heading">{{ingredientInfo.cocktails.length }} Коктейля с ингредиентом</h2>
+            </div>
+            <div class="row">
+                <div *ngFor="let cocktail of ingredientInfo.cocktails" class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="product-box-layout">
+                        <figure class="item-figure">
+                            <a routerLink="/cocktails/{{cocktail.id}}">
+                                <div class="img-container">
+                                    <img src="{{getImageUrl(cocktail.imageId)}}" alt="Ingredient">
+                                </div>
+                            </a>
+                        </figure>
+                        <div class="item-content">
+                            <span class="sub-title">{{getCocktailGroup(cocktail.group)}}</span>
+                            <h3 class="item-title">
+                                <a routerLink="/cocktails/{{cocktail.id}}">{{cocktail.name}}</a>
+                            </h3>
+                            <ul class="item-rating">
+                                <li class="star-fill"><i class="fas fa-star"></i></li>
+                                <li class="star-fill"><i class="fas fa-star"></i></li>
+                                <li class="star-fill"><i class="fas fa-star"></i></li>
+                                <li class="star-fill"><i class="fas fa-star"></i></li>
+                                <li class="star-empty"><i class="fas fa-star"></i></li>
+                                <li><span>9<span> / 10</span></span></li>
+                            </ul>
+                            <ul class="entry-meta">
+                                <li *ngIf="cocktail.author">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        <span>{{cocktail.author.firstname}} {{cocktail.author.lastname}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fas fa-heart"></i>
+                                        <span>2</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

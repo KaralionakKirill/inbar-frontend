@@ -35,6 +35,7 @@ export class RegistrationComponent {
 
   onRegister() {
     this.submit = true
+    console.log(this.form.get('professional')!.value)
     if (this.form.valid) {
       this.authService.register(
         this.form.get('email')!.value,

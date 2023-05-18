@@ -17,7 +17,7 @@ export class IngredientTypesComponent implements OnInit {
   ngOnInit(): void {
     this.compositionService.getIngredientTypes().subscribe({
       next: response =>{
-        this.ingredientTypes = response
+        this.ingredientTypes = response.filter(value => value.name !== 'Любой')
         response.forEach(type => this.ingredientsAmount += type.ingredientsAmount)
       }
     })

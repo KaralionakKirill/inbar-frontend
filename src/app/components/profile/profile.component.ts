@@ -5,6 +5,7 @@ import { FileService } from '../../services/file/file.service'
 import { UserService } from '../../services/user/user.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { InformationMessageService } from '../../services/information/information-message.service'
+import { CocktailGroup } from '../../domain/cocktail'
 
 @Component({
   selector: 'app-profile',
@@ -114,5 +115,17 @@ export class ProfileComponent implements OnInit {
 
   onClose() {
     this.setFormValues()
+  }
+
+  createdCocktailsExist(){
+    return this.userInfo.cocktails.length > 0
+  }
+
+  getCocktailGroup(group: CocktailGroup) {
+    return group.name.toUpperCase()
+  }
+
+  getImageUrl(imageId: number) {
+    return this.fileService.getFileUrl(imageId)
   }
 }

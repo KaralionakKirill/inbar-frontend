@@ -1,4 +1,4 @@
-import { AlcoholDegree, CookingMethod, Measure, Taste } from './common'
+import { AlcoholDegree, CookingMethod, Measure, Status, Taste } from './common'
 import { Ingredient } from './ingredient'
 
 export interface CocktailGroup {
@@ -43,4 +43,44 @@ export interface IngredientDto {
   ingredient: Ingredient
 
   measure: Measure
+}
+
+export interface CocktailAuthor {
+  id: number
+
+  firstname: string
+
+  lastname: string
+}
+
+export interface Cocktail {
+  id: number
+
+  name: string
+
+  imageId: number
+
+  author: CocktailAuthor | null
+
+  group: CocktailGroup
+
+  status: Status
+
+  createdTs: Date
+
+  modifiedTs: Date
+}
+
+export interface CocktailInfo extends Cocktail {
+  cookingSteps: string
+
+  aboutCocktail: string
+
+  taste: Taste
+
+  alcoholDegree: AlcoholDegree
+
+  cookingMethod: CookingMethod
+
+  ingredients: Array<IngredientDto>
 }

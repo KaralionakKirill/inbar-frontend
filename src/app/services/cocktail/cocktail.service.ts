@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { CreateCocktailRequest, CreateCocktailResponse } from '../../domain/cocktail'
+import { Cocktail, CocktailInfo, CreateCocktailRequest, CreateCocktailResponse } from '../../domain/cocktail'
 import { HttpClient } from '@angular/common/http'
 
 @Injectable({
@@ -14,5 +14,13 @@ export class CocktailService {
       'cocktails/new',
       request
     )
+  }
+
+  getCocktails() {
+    return this.http.get<Array<Cocktail>>('cocktails')
+  }
+
+  getCocktailInfo(id: number) {
+    return this.http.get<CocktailInfo>(`cocktails/${id}`)
   }
 }

@@ -17,21 +17,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="section-heading heading-dark">
-                    <h2 class="item-heading">36 RECIPES</h2>
+                <div class="section-heading heading-dark" *ngIf="createdCocktailsExist()">
+                    <h2 class="item-heading">{{userInfo.cocktails.length}} Созданных коктейля</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-12">
+                    <div *ngFor="let cocktail of userInfo.cocktails" class="col-md-6 col-sm-6 col-12">
                         <div class="product-box-layout">
                             <figure class="item-figure">
-                                <a href="#">
-                                    <img src="../../../assets/img/product/product50.jpg" alt="Product">
+                                <a routerLink="/cocktails/{{cocktail.id}}">
+                                    <div class="img-container">
+                                        <img src="{{getImageUrl(cocktail.imageId)}}" alt="Ingredient">
+                                    </div>
                                 </a>
                             </figure>
                             <div class="item-content">
-                                <span class="sub-title">CHICKEN</span>
+                                <span class="sub-title">{{getCocktailGroup(cocktail.group)}}</span>
                                 <h3 class="item-title">
-                                    <a href="#">Tomatoes Stuffed with Foie and Chanterelles</a>
+                                    <a routerLink="/cocktails/{{cocktail.id}}">{{cocktail.name}}</a>
                                 </h3>
                                 <ul class="item-rating">
                                     <li class="star-fill"><i class="fas fa-star"></i></li>
@@ -41,34 +43,24 @@
                                     <li class="star-empty"><i class="fas fa-star"></i></li>
                                     <li><span>9<span> / 10</span></span></li>
                                 </ul>
-                                <p>More off this less hello salamander lied porpoise much over tightly circa
-                                    outside crud mightily rigorouse. </p>
                                 <ul class="entry-meta">
-                                    <li><a href="#"><i class="fas fa-clock"></i>15 Mins</a></li>
-                                    <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i><span>02</span> Likes</a></li>
+                                    <li *ngIf="cocktail.author">
+                                        <a href="#">
+                                            <i class="fas fa-user"></i>
+                                            <span>{{cocktail.author.firstname}} {{cocktail.author.lastname}}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-heart"></i>
+                                            <span>02</span> Likes
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <ul class="pagination-layout">
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                </ul>
             </div>
             <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
                 <div class="widget">
@@ -82,7 +74,8 @@
                                 <button type="button" (click)="fileUpload.click()">Изменить аватар</button>
                             </li>
                             <li class="single-item">
-                                <button type="button" data-toggle="modal" data-target="#userModal">Редактировать</button>
+                                <button type="button" data-toggle="modal" data-target="#userModal">Редактировать
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -98,7 +91,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="title-default-bold mb-none">Редактирование профиля</div>
-                <button #closeUserModal type="button" class="close" data-dismiss="modal" (click)="onClose()">&times;</button>
+                <button #closeUserModal type="button" class="close" data-dismiss="modal" (click)="onClose()">&times;
+                </button>
             </div>
             <div class="modal-body">
                 <form class="user-form" [formGroup]="form" novalidate>
