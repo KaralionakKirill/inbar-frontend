@@ -203,11 +203,9 @@
                                     <span>{{cocktail.author.firstname}} {{cocktail.author.lastname}}</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-heart"></i>
-                                    <span>2</span>
-                                </a>
+                            <li (click)="likeCocktail(cocktail)">
+                                <i class="fas fa-heart"></i>
+                                <span>{{cocktail.likesAmount}}</span>
                             </li>
                         </ul>
                     </div>

@@ -3952,27 +3952,27 @@ ul {
     margin-right: 0;
 }
 
-.ranna-slider-content-layout1 .item-content .entry-meta li a {
+.ranna-slider-content-layout1 .item-content .entry-meta li {
     color: #909090;
     transition: all 0.3s ease-out;
 }
 
-.ranna-slider-content-layout1 .item-content .entry-meta li a span {
+.ranna-slider-content-layout1 .item-content .entry-meta li span {
     color: #111111;
     transition: all 0.3s ease-out;
 }
 
-.ranna-slider-content-layout1 .item-content .entry-meta li a i {
+.ranna-slider-content-layout1 .item-content .entry-meta li i {
     margin-right: 10px;
     color: #ff4a52;
     font-size: 14px;
 }
 
-.ranna-slider-content-layout1 .item-content .entry-meta li a:hover {
+.ranna-slider-content-layout1 .item-content .entry-meta li:hover {
     color: #ff4a52;
 }
 
-.ranna-slider-content-layout1 .item-content .entry-meta li a:hover span {
+.ranna-slider-content-layout1 .item-content .entry-meta li:hover span {
     color: #ff4a52;
 }
 
@@ -4267,16 +4267,15 @@ ul {
 }
 
 .product-box-layout .item-figure .img-container {
+    display: flex;
+    justify-content: center;
     width: 370px;
     height: 350px
 }
 
-.product-box-layout .item-figure img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
+.product-box-layout .item-figure .img-container img {
+    height: 100%;
+    object-fit: cover;
     transform: rotate(0) scale(1);
     transition: all 0.3s ease-in-out;
 }
@@ -4370,27 +4369,27 @@ ul {
     margin-right: 0;
 }
 
-.product-box-layout .item-content .entry-meta li a {
+.product-box-layout .item-content .entry-meta li {
     color: #909090;
     transition: all 0.3s ease-out;
 }
 
-.product-box-layout .item-content .entry-meta li a span {
+.product-box-layout .item-content .entry-meta li span {
     color: #111111;
     transition: all 0.3s ease-out;
 }
 
-.product-box-layout .item-content .entry-meta li a i {
+.product-box-layout .item-content .entry-meta li i {
     margin-right: 10px;
     color: #ff4a52;
     font-size: 14px;
 }
 
-.product-box-layout .item-content .entry-meta li a:hover {
+.product-box-layout .item-content .entry-meta li:hover {
     color: #ff4a52;
 }
 
-.product-box-layout .item-content .entry-meta li a:hover span {
+.product-box-layout .item-content .entry-meta li:hover span {
     color: #ff4a52;
 }
 
@@ -7011,27 +7010,27 @@ ul {
     margin-right: 0;
 }
 
-.single-recipe-layout2 .entry-meta .single-meta a {
+.single-recipe-layout2 .entry-meta .single-meta {
     color: #909090;
     transition: all 0.3s ease-out;
 }
 
-.single-recipe-layout2 .entry-meta .single-meta a span {
+.single-recipe-layout2 .entry-meta .single-meta span {
     color: #111111;
     transition: all 0.3s ease-out;
 }
 
-.single-recipe-layout2 .entry-meta .single-meta a i {
+.single-recipe-layout2 .entry-meta .single-meta i {
     margin-right: 5px;
     color: #ff4a52;
     font-size: 14px;
 }
 
-.single-recipe-layout2 .entry-meta .single-meta a:hover {
+.single-recipe-layout2 .entry-meta .single-meta:hover {
     color: #ff4a52;
 }
 
-.single-recipe-layout2 .entry-meta .single-meta a:hover span {
+.single-recipe-layout2 .entry-meta .single-meta:hover span {
     color: #ff4a52;
 }
 

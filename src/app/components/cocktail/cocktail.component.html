@@ -20,9 +20,8 @@
             <div class="d-flex align-items-center justify-content-between flex-wrap mb-5">
                 <ul class="entry-meta">
                     <li class="single-meta">
-                        <a href="#"><i class="far fa-calendar-alt"></i>
-                            {{cocktailInfo.modifiedTs | date:'dd.MM.yyyy HH:mm:ss'}}
-                        </a>
+                        <i class="far fa-calendar-alt"></i>
+                        {{cocktailInfo.modifiedTs | date:'dd.MM.yyyy HH:mm:ss'}}
                     </li>
                     <li class="single-meta" *ngIf="cocktailInfo.author">
                         <a href="#">
@@ -32,18 +31,27 @@
                     </li>
                     <li class="single-meta">
                         <ul class="item-rating">
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-empty"><i class="fas fa-star"></i></li>
+                            <li class="star-fill">
+                                <i class="fas fa-star"></i>
+                            </li>
+                            <li class="star-fill">
+                                <i class="fas fa-star"></i>
+                            </li>
+                            <li class="star-fill">
+                                <i class="fas fa-star"></i>
+                            </li>
+                            <li class="star-fill">
+                                <i class="fas fa-star"></i>
+                            </li>
+                            <li class="star-empty">
+                                <i class="fas fa-star"></i>
+                            </li>
                             <li><span>9<span> / 10</span></span></li>
                         </ul>
                     </li>
-                    <li class="single-meta">
-                        <a href="#"><i class="fas fa-heart"></i>
-                            <span>2</span>
-                        </a>
+                    <li class="single-meta" (click)="likeCocktail()">
+                        <i class="fas fa-heart"></i>
+                        <span>{{cocktailInfo.likesAmount}}</span>
                     </li>
                 </ul>
                 <ul class="action-item">

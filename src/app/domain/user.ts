@@ -13,10 +13,14 @@ export interface UserInfo{
 
   role: UserRole
 
-  cocktails: Array<Cocktail>
+  createdCocktails: Array<Cocktail>
+
+  likedCocktails: Array<Cocktail>
 }
 
 export interface UpdateUserRequest{
+  username: string,
+
   firstname: string | null
 
   lastname: string | null

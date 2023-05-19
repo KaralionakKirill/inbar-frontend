@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { FileService } from '../../services/file/file.service'
 import { CocktailInfo, IngredientDto } from '../../domain/cocktail'
+import { AuthService } from '../../services/auth/auth.service'
+import { InformationMessageService } from '../../services/information/information-message.service'
+import { CocktailService } from '../../services/cocktail/cocktail.service'
 
 @Component({
   selector: 'app-cocktail',
@@ -16,6 +19,9 @@ export class CocktailComponent implements OnInit {
   instruments: Array<IngredientDto> = []
 
   constructor(private route: ActivatedRoute,
+              private cocktailService: CocktailService,
+              private authService: AuthService,
+              private informationService: InformationMessageService,
               private fileService: FileService) {
   }
 
@@ -47,5 +53,17 @@ export class CocktailComponent implements OnInit {
 
   setInstruments() {
     this.instruments = this.cocktailInfo.ingredients.filter(value => value.ingredient.group.instrument)
+  }
+
+  likeCocktail() {
+    const username = this.authService.getName()
+    this.cocktailService.likeByUser(this.cocktailInfo.id, username).subscribe({
+      next: (response) => {
+        this.cocktailInfo.likesAmount = response.likesAmount
+      },
+      error: err => {
+        this.informationService.error(err.error.message)
+      }
+    })
   }
 }

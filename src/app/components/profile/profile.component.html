@@ -18,10 +18,10 @@
                     </div>
                 </div>
                 <div class="section-heading heading-dark" *ngIf="createdCocktailsExist()">
-                    <h2 class="item-heading">{{userInfo.cocktails.length}} Созданных коктейля</h2>
+                    <h2 class="item-heading">Созданные коктейли({{userInfo.createdCocktails.length}})</h2>
                 </div>
                 <div class="row">
-                    <div *ngFor="let cocktail of userInfo.cocktails" class="col-md-6 col-sm-6 col-12">
+                    <div *ngFor="let cocktail of userInfo.createdCocktails" class="col-md-6 col-sm-6 col-12">
                         <div class="product-box-layout">
                             <figure class="item-figure">
                                 <a routerLink="/cocktails/{{cocktail.id}}">
@@ -50,11 +50,51 @@
                                             <span>{{cocktail.author.firstname}} {{cocktail.author.lastname}}</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li (click)="likeCocktail(cocktail)">
+                                        <i class="fas fa-heart"></i>
+                                        <span>{{cocktail.likesAmount}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-heading heading-dark" *ngIf="likedCocktailsExist()">
+                    <h2 class="item-heading">Понравившиеся коктейли({{userInfo.likedCocktails.length}})</h2>
+                </div>
+                <div class="row">
+                    <div *ngFor="let cocktail of userInfo.likedCocktails" class="col-md-6 col-sm-6 col-12">
+                        <div class="product-box-layout">
+                            <figure class="item-figure">
+                                <a routerLink="/cocktails/{{cocktail.id}}">
+                                    <div class="img-container">
+                                        <img src="{{getImageUrl(cocktail.imageId)}}" alt="Ingredient">
+                                    </div>
+                                </a>
+                            </figure>
+                            <div class="item-content">
+                                <span class="sub-title">{{getCocktailGroup(cocktail.group)}}</span>
+                                <h3 class="item-title">
+                                    <a routerLink="/cocktails/{{cocktail.id}}">{{cocktail.name}}</a>
+                                </h3>
+                                <ul class="item-rating">
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-fill"><i class="fas fa-star"></i></li>
+                                    <li class="star-empty"><i class="fas fa-star"></i></li>
+                                    <li><span>9<span> / 10</span></span></li>
+                                </ul>
+                                <ul class="entry-meta">
+                                    <li *ngIf="cocktail.author">
                                         <a href="#">
-                                            <i class="fas fa-heart"></i>
-                                            <span>02</span> Likes
+                                            <i class="fas fa-user"></i>
+                                            <span>{{cocktail.author.firstname}} {{cocktail.author.lastname}}</span>
                                         </a>
+                                    </li>
+                                    <li (click)="likeCocktail(cocktail)">
+                                        <i class="fas fa-heart"></i>
+                                        <span>{{cocktail.likesAmount}}</span>
                                     </li>
                                 </ul>
                             </div>

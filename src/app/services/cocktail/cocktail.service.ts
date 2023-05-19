@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http'
 })
 export class CocktailService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   createCocktail(request: CreateCocktailRequest) {
     return this.http.post<CreateCocktailResponse>(
@@ -22,5 +23,15 @@ export class CocktailService {
 
   getCocktailInfo(id: number) {
     return this.http.get<CocktailInfo>(`cocktails/${id}`)
+  }
+
+  likeByUser(id: number, username: string) {
+    return this.http.put<Cocktail>(
+      `cocktails/${id}/like/user`,
+      null,
+      {
+        params: { username }
+      }
+    )
   }
 }

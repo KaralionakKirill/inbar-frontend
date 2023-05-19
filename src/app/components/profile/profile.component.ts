@@ -5,7 +5,7 @@ import { FileService } from '../../services/file/file.service'
 import { UserService } from '../../services/user/user.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { InformationMessageService } from '../../services/information/information-message.service'
-import { CocktailGroup } from '../../domain/cocktail'
+import { Cocktail, CocktailGroup } from '../../domain/cocktail'
 
 @Component({
   selector: 'app-profile',
@@ -18,10 +18,6 @@ export class ProfileComponent implements OnInit {
   userInfo!: UserInfo
 
   avatarUrl = '../../../assets/img/blog/author.jpg'
-
-  isError: boolean = false
-
-  errorMessage!: string
 
   form: FormGroup = new FormGroup({
     firstname: new FormControl<string | null>(null, Validators.required),
@@ -53,6 +49,8 @@ export class ProfileComponent implements OnInit {
       this.fileService.uploadFile(image, imageName).subscribe({
         next: fileId => {
           const request: UpdateUserRequest = {
+            username: this.userInfo.email,
+
             firstname: null,
 
             lastname: null,
@@ -61,7 +59,7 @@ export class ProfileComponent implements OnInit {
 
             avatarId: fileId
           }
-          this.userService.updateUser(this.userInfo.email, request).subscribe({
+          this.userService.updateUser(request).subscribe({
             next: response => {
               this.userInfo = response
               this.setFileUrl()
@@ -94,6 +92,8 @@ export class ProfileComponent implements OnInit {
   onUpdate() {
     if (this.form.valid) {
       const request: UpdateUserRequest = {
+        username: this.userInfo.email,
+
         firstname: this.form.get('firstname')!.value,
 
         lastname: this.form.get('lastname')!.value,
@@ -102,7 +102,7 @@ export class ProfileComponent implements OnInit {
 
         avatarId: null
       }
-      this.userService.updateUser(this.userInfo.email, request).subscribe({
+      this.userService.updateUser(request).subscribe({
         next: response => {
           this.userInfo = response
           this.setFormValues()
@@ -118,7 +118,11 @@ export class ProfileComponent implements OnInit {
   }
 
   createdCocktailsExist(){
-    return this.userInfo.cocktails.length > 0
+    return this.userInfo.createdCocktails.length > 0
+  }
+
+  likedCocktailsExist(){
+    return this.userInfo.likedCocktails.length > 0
   }
 
   getCocktailGroup(group: CocktailGroup) {
@@ -127,5 +131,16 @@ export class ProfileComponent implements OnInit {
 
   getImageUrl(imageId: number) {
     return this.fileService.getFileUrl(imageId)
+  }
+
+  likeCocktail(cocktail: Cocktail) {
+    this.userService.likeCocktail(cocktail.id, this.userInfo.email).subscribe({
+      next: (response) => {
+        this.userInfo = response
+      },
+      error: err => {
+        this.informationService.error(err.message)
+      }
+    })
   }
 }

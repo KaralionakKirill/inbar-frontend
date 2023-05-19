@@ -14,10 +14,20 @@ export class UserService {
     return this.http.get<UserInfo>(`users/${name}`)
   }
 
-  updateUser(name: string, request: UpdateUserRequest) {
-    return this.http.post<UserInfo>(
-      `users/${name}`,
+  updateUser(request: UpdateUserRequest) {
+    return this.http.put<UserInfo>(
+      'users',
       request
+    )
+  }
+
+  likeCocktail(cocktailId: number, username: string) {
+    return this.http.put<UserInfo>(
+      `users/like/cocktail/${cocktailId}`,
+      null,
+      {
+        params: { username }
+      }
     )
   }
 }

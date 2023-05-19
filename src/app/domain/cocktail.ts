@@ -64,6 +64,8 @@ export interface Cocktail {
 
   group: CocktailGroup
 
+  likesAmount: number
+
   status: Status
 
   createdTs: Date
@@ -83,4 +85,6 @@ export interface CocktailInfo extends Cocktail {
   cookingMethod: CookingMethod
 
   ingredients: Array<IngredientDto>
+
+  comments: Array<Comment>
 }
