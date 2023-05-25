@@ -15,7 +15,12 @@ export class UserResolverService implements Resolve<UserInfo> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UserInfo> {
-    const name = this.authService.getName()
-    return this.userService.getUserInfo(name)
+    const paramName = route.queryParams['name']
+    if (paramName) {
+      return this.userService.getUserInfo(paramName)
+    } else {
+      const name = this.authService.getName()
+      return this.userService.getUserInfo(name)
+    }
   }
 }

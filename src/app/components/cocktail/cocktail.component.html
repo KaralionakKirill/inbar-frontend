@@ -24,7 +24,7 @@
                         {{cocktailInfo.modifiedTs | date:'dd.MM.yyyy HH:mm:ss'}}
                     </li>
                     <li class="single-meta" *ngIf="cocktailInfo.author">
-                        <a href="#">
+                        <a routerLink="/bartenders/{{cocktailInfo.author.email}}">
                             <i class="fas fa-user"></i>
                             <span>{{cocktailInfo.author.firstname}} {{cocktailInfo.author.lastname}}</span>
                         </a>

@@ -1,6 +1,8 @@
 import { Cocktail } from './cocktail'
 
 export interface UserInfo{
+  id: number
+
   firstname: string
 
   lastname: string
@@ -16,6 +18,8 @@ export interface UserInfo{
   createdCocktails: Array<Cocktail>
 
   likedCocktails: Array<Cocktail>
+
+  commentAmount: number
 }
 
 export interface UpdateUserRequest{

@@ -49,6 +49,8 @@ export interface IngredientDto {
 export interface CocktailAuthor {
   id: number
 
+  email: string
+
   firstname: string
 
   lastname: string

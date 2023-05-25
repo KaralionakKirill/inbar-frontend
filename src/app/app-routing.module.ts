@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './components/home/home.component'
 import { NotFoundComponent } from './components/not-found/not-found.component'
-import { IngredientTypesComponent } from './components/ingredient-types/ingredient-types.component'
 import { CocktailsComponent } from './components/cocktails/cocktails.component'
 import { CocktailComponent } from './components/cocktail/cocktail.component'
 import { RegistrationComponent } from './components/registration/registration.component'
@@ -14,11 +13,14 @@ import { ProfileComponent } from './components/profile/profile.component'
 import { UserResolverService } from './resolvers/user/user-resolver.service'
 import { CreateCocktailComponent } from './components/create-cocktail/create-cocktail.component'
 import { CocktailResolverService } from './resolvers/cocktail/cocktail-resolver.service'
+import { BartendersComponent } from './components/bartenders/bartenders.component'
+import { BartenderComponent } from './components/bartender/bartender.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'ingredient-types', component: IngredientTypesComponent },
+  { path: 'bartenders', component: BartendersComponent },
+  { path: 'bartenders/:id', component: BartenderComponent, resolve: { userInfo: UserResolverService } },
   { path: 'ingredients', component: IngredientsComponent },
   { path: 'ingredients/:id', component: IngredientComponent, resolve: { ingredientInfo: IngredientResolverService } },
   { path: 'cocktails', component: CocktailsComponent },

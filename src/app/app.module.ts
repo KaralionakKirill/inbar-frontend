@@ -10,7 +10,6 @@ import { FooterComponent } from './components/footer/footer.component'
 import { HomeComponent } from './components/home/home.component'
 import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
-import { IngredientTypesComponent } from './components/ingredient-types/ingredient-types.component'
 import { CocktailsComponent } from './components/cocktails/cocktails.component'
 import { InnerPageBannerComponent } from './components/inner-page-banner/inner-page-banner.component'
 import { CocktailComponent } from './components/cocktail/cocktail.component'
@@ -33,6 +32,9 @@ import { CreateCocktailComponent } from './components/create-cocktail/create-coc
 import { CheckboxModule } from 'primeng/checkbox'
 import { ToggleButtonModule } from 'primeng/togglebutton'
 import { RatingModule } from 'primeng/rating'
+import { BartendersComponent } from './components/bartenders/bartenders.component'
+import { BartenderComponent } from './components/bartender/bartender.component'
+import { CocktailListComponent } from './components/cocktail-list/cocktail-list.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +44,6 @@ import { RatingModule } from 'primeng/rating'
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
-    IngredientTypesComponent,
     CocktailsComponent,
     InnerPageBannerComponent,
     CocktailComponent,
@@ -51,7 +52,10 @@ import { RatingModule } from 'primeng/rating'
     IngredientsComponent,
     IngredientComponent,
     ProfileComponent,
-    CreateCocktailComponent
+    CreateCocktailComponent,
+    BartendersComponent,
+    BartenderComponent,
+    CocktailListComponent
   ],
   imports: [
     AppRoutingModule,

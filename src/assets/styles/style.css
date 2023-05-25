@@ -4263,14 +4263,13 @@ ul {
 }
 
 .product-box-layout .item-figure a {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .product-box-layout .item-figure .img-container {
-    display: flex;
-    justify-content: center;
-    width: 370px;
-    height: 350px
+    height: 350px;
+    width: 100%;
 }
 
 .product-box-layout .item-figure .img-container img {
@@ -8662,6 +8661,9 @@ ul {
 }
 
 .author-box-layout1 .author-personal-info .item-figure img {
+    object-fit: cover;
+    width: 60px;
+    height: 100%;
     border-radius: 50%;
     border: 4px solid #ffffff;
     box-shadow: 0 6px 10px 0 rgba(165, 165, 165, 0.58);
@@ -8703,12 +8705,10 @@ ul {
     text-align: center;
     background-color: #ffffff;
     align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     height: 90px;
-    width: 90px;
+    width: 120px;
     border-radius: 4px;
     box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.1);
 }

@@ -14,7 +14,7 @@ export class RegistrationComponent {
   submit = false
 
   form: FormGroup = new FormGroup({
-    professional: new FormControl<boolean>(false),
+ //   professional: new FormControl<boolean>(false),
 
     firstname: new FormControl<string | null>(null, Validators.required),
 

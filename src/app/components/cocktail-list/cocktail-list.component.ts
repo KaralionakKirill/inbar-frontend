@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Cocktail, CocktailGroup } from '../../domain/cocktail'
 import { CocktailService } from '../../services/cocktail/cocktail.service'
 import { AuthService } from '../../services/auth/auth.service'
@@ -6,31 +6,17 @@ import { InformationMessageService } from '../../services/information/informatio
 import { FileService } from '../../services/file/file.service'
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-cocktail-list',
+  templateUrl: './cocktail-list.component.html',
+  styleUrls: ['./cocktail-list.component.css']
 })
-export class HomeComponent implements OnInit {
-  mostRatedCocktails: Array<Cocktail> = []
-  frequentlyLikedCocktails: Array<Cocktail> = []
+export class CocktailListComponent {
+  @Input() cocktails: Array<Cocktail> = []
 
   constructor(private cocktailService: CocktailService,
               private authService: AuthService,
               private informationService: InformationMessageService,
               private fileService: FileService) {
-  }
-
-  ngOnInit(): void {
-    this.cocktailService.getFrequentlyLikedCocktails().subscribe({
-      next: response => {
-        this.frequentlyLikedCocktails = response
-      }
-    })
-    this.cocktailService.getMostRatedCocktails().subscribe({
-      next: response => {
-        this.mostRatedCocktails = response
-      }
-    })
   }
 
   getImageUrl(imageId: number) {

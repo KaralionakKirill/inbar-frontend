@@ -21,6 +21,14 @@ export class CocktailService {
     return this.http.get<Array<Cocktail>>('cocktails')
   }
 
+  getMostRatedCocktails() {
+    return this.http.get<Array<Cocktail>>('cocktails/rated')
+  }
+
+  getFrequentlyLikedCocktails() {
+    return this.http.get<Array<Cocktail>>('cocktails/liked')
+  }
+
   getCocktailInfo(id: number) {
     return this.http.get<CocktailInfo>(`cocktails/${id}`)
   }

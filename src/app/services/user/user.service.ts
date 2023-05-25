@@ -30,4 +30,8 @@ export class UserService {
       }
     )
   }
+
+  getBartenders() {
+    return this.http.get<Array<UserInfo>>('users/bartenders')
+  }
 }
