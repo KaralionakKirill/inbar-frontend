@@ -5,6 +5,9 @@ import { CocktailInfo, IngredientDto } from '../../domain/cocktail'
 import { AuthService } from '../../services/auth/auth.service'
 import { InformationMessageService } from '../../services/information/information-message.service'
 import { CocktailService } from '../../services/cocktail/cocktail.service'
+import { CommentService } from '../../services/comment/comment.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { CreateCommentRequest } from '../../domain/comment'
 
 @Component({
   selector: 'app-cocktail',
@@ -18,8 +21,17 @@ export class CocktailComponent implements OnInit {
 
   instruments: Array<IngredientDto> = []
 
+  form: FormGroup = new FormGroup({
+    rating: new FormControl(0),
+
+    message: new FormControl<string | null>(null, Validators.required)
+  })
+
+  submit: boolean = false
+
   constructor(private route: ActivatedRoute,
               private cocktailService: CocktailService,
+              private commentService: CommentService,
               private authService: AuthService,
               private informationService: InformationMessageService,
               private fileService: FileService) {
@@ -65,5 +77,42 @@ export class CocktailComponent implements OnInit {
         this.informationService.error(err.error.message)
       }
     })
+  }
+
+  canComment() {
+    const userEmail = this.authService.getName()
+    return this.cocktailInfo.comments.filter(value => value.author.email == userEmail).length == 0
+  }
+
+  onComment() {
+    this.submit = true
+    if (this.form.valid) {
+      const request: CreateCommentRequest = {
+        rating: this.form.get('rating')!.value,
+
+        message: this.form.get('message')!.value,
+
+        cocktailId: this.cocktailInfo.id,
+
+        authorName: this.authService.getName()
+      }
+      this.commentService.createComment(request).subscribe({
+        next: () => {
+          this.submit = false
+          this.cocktailService.getCocktailInfo(this.cocktailInfo.id).subscribe({
+            next: response => {
+              this.cocktailInfo = response
+              this.informationService.success('Комментарий успешно добавлен.')
+            },
+            error: err => {
+              this.informationService.error(err.message)
+            }
+          })
+        },
+        error: err => {
+          this.informationService.error(err.message)
+        }
+      })
+    }
   }
 }

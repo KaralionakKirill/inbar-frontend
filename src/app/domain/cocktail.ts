@@ -1,5 +1,6 @@
 import { AlcoholDegree, CookingMethod, Measure, Status, Taste } from './common'
 import { Ingredient } from './ingredient'
+import { Comment } from './comment'
 
 export interface CocktailGroup {
   id: number
@@ -67,6 +68,8 @@ export interface Cocktail {
   likesAmount: number
 
   status: Status
+
+  averageRating: number,
 
   createdTs: Date
 

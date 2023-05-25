@@ -31,22 +31,22 @@
                     </li>
                     <li class="single-meta">
                         <ul class="item-rating">
-                            <li class="star-fill">
+                            <li [ngClass]="{'star-fill': cocktailInfo.averageRating > 0, 'star-empty': cocktailInfo.averageRating < 1}">
                                 <i class="fas fa-star"></i>
                             </li>
-                            <li class="star-fill">
+                            <li [ngClass]="{'star-fill': cocktailInfo.averageRating > 1, 'star-empty': cocktailInfo.averageRating < 2}">
                                 <i class="fas fa-star"></i>
                             </li>
-                            <li class="star-fill">
+                            <li [ngClass]="{'star-fill': cocktailInfo.averageRating > 2, 'star-empty': cocktailInfo.averageRating < 3}">
                                 <i class="fas fa-star"></i>
                             </li>
-                            <li class="star-fill">
+                            <li [ngClass]="{'star-fill': cocktailInfo.averageRating > 3, 'star-empty': cocktailInfo.averageRating < 4}">
                                 <i class="fas fa-star"></i>
                             </li>
-                            <li class="star-empty">
+                            <li [ngClass]="{'star-fill': cocktailInfo.averageRating > 4, 'star-empty': cocktailInfo.averageRating < 5}">
                                 <i class="fas fa-star"></i>
                             </li>
-                            <li><span>9<span> / 10</span></span></li>
+                            <li><span>{{cocktailInfo.averageRating}}<span> / 5</span></span></li>
                         </ul>
                     </li>
                     <li class="single-meta" (click)="likeCocktail()">
@@ -116,67 +116,90 @@
                 <div class="avarage-rating-wrap">
                     <div class="avarage-rating">Средний рейтинг:
                         <span class="rating-icon-wrap">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"
+                                       [ngClass]="{'star-fill': cocktailInfo.averageRating > 0, 'star-empty': cocktailInfo.averageRating < 1}"></i>
+                                    <i class="fas fa-star"
+                                       [ngClass]="{'star-fill': cocktailInfo.averageRating > 1, 'star-empty': cocktailInfo.averageRating < 2}"></i>
+                                    <i class="fas fa-star"
+                                       [ngClass]="{'star-fill': cocktailInfo.averageRating > 2, 'star-empty': cocktailInfo.averageRating < 3}"></i>
+                                    <i class="fas fa-star"
+                                       [ngClass]="{'star-fill': cocktailInfo.averageRating > 3, 'star-empty': cocktailInfo.averageRating < 4}"></i>
+                                    <i class="fas fa-star"
+                                       [ngClass]="{'star-fill': cocktailInfo.averageRating > 4, 'star-empty': cocktailInfo.averageRating < 5}"></i>
                                 </span>
-                        <span class="rating-number">(5)</span>
+                        <span class="rating-number">({{cocktailInfo.averageRating}})</span>
                     </div>
-                    <div class="total-reviews">Всего комментариев:<span class="review-number">(02)</span></div>
+                    <div class="total-reviews">
+                        Всего комментариев:<span class="review-number">({{cocktailInfo.comments.length}})</span>
+                    </div>
                 </div>
                 <ul>
-                    <li class="reviews-single-item">
+                    <li *ngFor="let comment of cocktailInfo.comments" class="reviews-single-item">
                         <div class="media media-none--xs">
-                            <img src="../../../assets/img/blog/comment1.jpg" alt="Comment" class="media-img-auto">
+                            <img src="{{getUserAvatarUrl(comment.author.avatarId)}}"
+                                 alt="Comment"
+                                 class="media-img-auto">
                             <div class="media-body">
-                                <h4 class="comment-title">Liza Zaman</h4>
-                                <span class="post-date">September 27, 2018</span>
-                                <p>Absolutely great recipe. I cooked it for my kids and they loved it, even
-                                    asked for more, can you believe it?</p>
+                                <h4 class="comment-title">{{comment.author.firstname}} {{comment.author.lastname}}</h4>
+                                <span class="post-date">{{comment.createdTs | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+                                <p>{{comment.message}}</p>
                                 <ul class="item-rating">
-                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                    <li class="single-item star-fill"><i class="fas fa-star"></i></li>
-                                    <li class="single-item star-empty"><i class="fas fa-star"></i></li>
-                                    <li class="single-item"><span>9<span> / 10</span></span></li>
+                                    <li class="single-item"
+                                        [ngClass]="{'star-fill': comment.rating > 0, 'star-empty': comment.rating < 1}">
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li class="single-item"
+                                        [ngClass]="{'star-fill': comment.rating > 1, 'star-empty': comment.rating < 2}">
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li class="single-item"
+                                        [ngClass]="{'star-fill': comment.rating > 2, 'star-empty': comment.rating < 3}">
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li class="single-item"
+                                        [ngClass]="{'star-fill': comment.rating > 3, 'star-empty': comment.rating < 4}">
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li class="single-item"
+                                        [ngClass]="{'star-fill': comment.rating > 4, 'star-empty': comment.rating < 5}">
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li class="single-item"><span>{{comment.rating}}<span> / 5</span></span></li>
                                 </ul>
-                                <a href="#" class="item-btn">REPLY<i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="leave-review">
-                <div class="section-heading3 heading-dark">
-                    <h2 class="item-heading">ОСТАВИТЬ КОММЕНТАРИЙ</h2>
-                </div>
-                <div class="rate-wrapper">
-                    <div class="rate-label">Рейтинг</div>
-                    <div class="rate">
-                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                        <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+            <div class="leave-review" *ngIf="canComment()">
+                <form [formGroup]="form">
+                    <div class="section-heading3 heading-dark">
+                        <h2 class="item-heading">ОСТАВИТЬ КОММЕНТАРИЙ</h2>
                     </div>
-                </div>
-                <form class="leave-form-box">
-                    <div class="row">
-                        <div class="col-12 form-group">
-                            <label>Комментарий :</label>
-                            <textarea placeholder=""
-                                      class="textarea form-control"
-                                      name="message" rows="7" cols="20"
-                                      data-error="Message field is required" required></textarea>
-                        </div>
-                        <div class="col-12 form-group mb-0">
-                            <button type="submit" class="item-btn">ОСТАВИТЬ КОММЕНТАРИЙ</button>
+                    <div class="rate-wrapper">
+                        <div class="rate-label">Рейтинг:</div>
+                        <div class="rate">
+                            <p-rating formControlName="rating"></p-rating>
                         </div>
                     </div>
-                    <div class="form-response"></div>
+                    <div class="leave-form-box">
+                        <div class="row">
+                            <div class="col-12 form-group">
+                                <label>Комментарий:</label>
+                                <textarea placeholder=""
+                                          class="textarea form-control"
+                                          name="message" rows="7" cols="20"
+                                          formControlName="message"></textarea>
+                            </div>
+                            <div class="error-message" *ngIf="form.controls['message'].invalid && submit">
+                                Необходимо оставить хоть пару слов
+                            </div>
+                            <div class="col-12 form-group mb-0">
+                                <button type="submit" class="item-btn" (click)="onComment()">ОСТАВИТЬ КОММЕНТАРИЙ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

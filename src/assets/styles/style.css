@@ -6698,6 +6698,8 @@ ul {
 }
 
 .single-recipe-layout1 .recipe-reviews ul li.reviews-single-item img {
+    height: 180px;
+    max-width: 100%;
     border-radius: 50%;
 }
 
@@ -8048,6 +8050,8 @@ ul {
 }
 
 .single-recipe-layout2 .recipe-reviews ul li.reviews-single-item img {
+    height: 180px;
+    max-width: 100%;
     border-radius: 50%;
 }
 
@@ -9465,6 +9469,8 @@ ul {
 }
 
 .single-blog-box .recipe-reviews ul li.reviews-single-item img {
+    height: 180px;
+    max-width: 100%;
     border-radius: 50%;
 }
 
