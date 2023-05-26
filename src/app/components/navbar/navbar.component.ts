@@ -62,7 +62,11 @@ export class NavbarComponent {
     this.authService.logOut()
   }
 
-  adminOrBartender() {
+  isAdmin() {
+    return this.authService.isAuthenticated() && this.authService.isAdmin()
+  }
+
+  isAdminOrBartender() {
     return this.authService.isAdmin() || this.authService.isBartender()
   }
 }

@@ -26,6 +26,20 @@
                             <li>
                                 <a routerLink="/bartenders">Бармены</a>
                             </li>
+                            <li *ngIf="isAdmin()">
+                                <a>Модерация</a>
+                                <ul class="dropdown-menu-col-1">
+                                    <li>
+                                        <a routerLink="/management/ingredients">Модерация ингредиентов</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/management/cocktails">Модерация коктейлей</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/management/users">Модерация пользователей</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -37,10 +51,10 @@
                                     <i class="flaticon-profile"></i>Профиль
                                 </button>
                                 <ul class="dropdown-menu-col-1">
-                                    <li *ngIf="adminOrBartender()">
+                                    <li *ngIf="isAdminOrBartender()">
                                         <a routerLink="/create/ingredient">Добавить ингредиент</a>
                                     </li>
-                                    <li *ngIf="adminOrBartender()">
+                                    <li *ngIf="isAdminOrBartender()">
                                         <a routerLink="/create/cocktail">Добавить коктейль</a>
                                     </li>
                                     <li>

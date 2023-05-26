@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core'
-import { Cocktail, CocktailInfo, CreateCocktailRequest, CreateCocktailResponse } from '../../domain/cocktail'
+import {
+  Cocktail,
+  CocktailInfo,
+  CreateCocktailRequest,
+  CreateCocktailResponse,
+  UpdateCocktailRequest,
+  UpdateCocktailResponse
+} from '../../domain/cocktail'
+import { Page } from '../../domain/common'
 import { HttpClient } from '@angular/common/http'
+import { LazyLoadEvent } from 'primeng/api'
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +49,20 @@ export class CocktailService {
       {
         params: { username }
       }
+    )
+  }
+
+  getCocktailsByFilter(filter: LazyLoadEvent) {
+    return this.http.post<Page<Cocktail>>(
+      '/cocktails',
+      filter
+    )
+  }
+
+  updateCocktail(request: UpdateCocktailRequest) {
+    return this.http.put<UpdateCocktailResponse>(
+      'cocktails/update',
+      request
     )
   }
 }

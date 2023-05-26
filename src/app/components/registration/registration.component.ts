@@ -50,7 +50,6 @@ export class RegistrationComponent {
           this.router.navigate(['/'], { replaceUrl: true }).then()
         },
         error: err => {
-          console.log(err)
           if (err.status == '403') {
             this.displayError('Такой E-mail уже используется.')
           } else {

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core'
-import { CreateIngredientRequest, IngredientGroup, IngredientType } from '../../domain/ingredient'
-import { IngredientService } from '../../services/ingredient/ingredient.service'
-import { FileService } from '../../services/file/file.service'
-import { CommonService } from '../../services/common/common.service'
-import { AlcoholDegree, PrimaryIngredient, Taste } from '../../domain/common'
+import { IngredientGroup, IngredientInfo, IngredientType, UpdateIngredientRequest } from '../../../domain/ingredient'
+import { AlcoholDegree, PrimaryIngredient, Status, Taste } from '../../../domain/common'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { InformationMessageService } from '../../services/information/information-message.service'
-import { AuthService } from '../../services/auth/auth.service'
+import { IngredientService } from '../../../services/ingredient/ingredient.service'
+import { CommonService } from '../../../services/common/common.service'
+import { FileService } from '../../../services/file/file.service'
+import { InformationMessageService } from '../../../services/information/information-message.service'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
-  selector: 'app-create-ingredient',
-  templateUrl: './create-ingredient.component.html',
-  styleUrls: ['./create-ingredient.component.css']
+  selector: 'app-ingredient-management',
+  templateUrl: './ingredient-management.component.html',
+  styleUrls: ['./ingredient-management.component.css']
 })
-export class CreateIngredientComponent implements OnInit {
+export class IngredientManagementComponent implements OnInit {
   imageId: number | null = null
 
   imageUrl: string = '../../../assets/img/figure/upload-banner.jpg'
@@ -28,6 +28,12 @@ export class CreateIngredientComponent implements OnInit {
 
   alcoholDegrees: Array<AlcoholDegree> = []
 
+  ingredientInfo!: IngredientInfo
+
+  statuses = Object.keys(Status).filter((item) => {
+    return isNaN(Number(item))
+  })
+
   form: FormGroup = new FormGroup({
     name: new FormControl<string | null>(null, Validators.required),
 
@@ -41,7 +47,9 @@ export class CreateIngredientComponent implements OnInit {
 
     alcoholDegree: new FormControl<AlcoholDegree | null>(null, Validators.required),
 
-    taste: new FormControl<Taste | null>(null, Validators.required)
+    taste: new FormControl<Taste | null>(null, Validators.required),
+
+    status: new FormControl<Status | null>(null, Validators.required)
   })
 
   submit = false
@@ -50,10 +58,16 @@ export class CreateIngredientComponent implements OnInit {
               private commonService: CommonService,
               private fileService: FileService,
               private informationService: InformationMessageService,
-              private authService: AuthService) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.route.data.subscribe(data => {
+        this.ingredientInfo = data['ingredientInfo']
+        this.setFormValues()
+      }
+    )
     this.commonService.getIngredientTypes().subscribe({
       next: response => this.ingredientTypes = response
     })
@@ -71,6 +85,28 @@ export class CreateIngredientComponent implements OnInit {
     })
   }
 
+  setFormValues() {
+    this.form.setValue({
+      name: this.ingredientInfo.name,
+
+      description: this.ingredientInfo.description,
+
+      type: this.ingredientInfo.type,
+
+      group: this.ingredientInfo.group,
+
+      primaryIngredient: this.ingredientInfo.primaryIngredient,
+
+      alcoholDegree: this.ingredientInfo.alcoholDegree,
+
+      taste: this.ingredientInfo.taste,
+
+      status: this.ingredientInfo.status
+    })
+    this.imageId = this.ingredientInfo.imageId
+    this.imageUrl = this.fileService.getFileUrl(this.ingredientInfo.imageId)
+  }
+
   onSelect(event: any) {
     if (event.target.files && event.target.files[0]) {
       const image = event.target.files[0]
@@ -84,15 +120,15 @@ export class CreateIngredientComponent implements OnInit {
     }
   }
 
-  onCreate() {
+  onUpdate() {
     this.submit = true
     if (this.form.valid && this.imageId) {
-      const request: CreateIngredientRequest = {
+      const request: UpdateIngredientRequest = {
+        id: this.ingredientInfo.id,
+
         name: this.form.get('name')!.value,
 
         description: this.form.get('description')!.value,
-
-        author: this.authService.getName(),
 
         imageId: this.imageId!,
 
@@ -104,15 +140,14 @@ export class CreateIngredientComponent implements OnInit {
 
         alcoholDegree: this.form.get('alcoholDegree')!.value,
 
-        taste: this.form.get('taste')!.value
+        taste: this.form.get('taste')!.value,
+
+        status: this.form.get('status')!.value
       }
-      this.ingredientService.createIngredient(request).subscribe({
+      this.ingredientService.updateIngredient(request).subscribe({
         next: response => {
-          this.form.reset()
-          this.imageUrl = '../../../assets/img/figure/upload-banner.jpg'
-          this.imageId = null
-          this.submit = false
-          this.informationService.success(`Ингредиент ${response.name} успешно добавлен.`)
+          this.router.navigate(['/management/ingredients'], { replaceUrl: true }).then()
+          this.informationService.success(`Ингредиент ${response.name} успешно обновлён.`)
         }
       })
     }

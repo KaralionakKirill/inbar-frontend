@@ -35,6 +35,17 @@ import { RatingModule } from 'primeng/rating'
 import { BartendersComponent } from './components/bartenders/bartenders.component'
 import { BartenderComponent } from './components/bartender/bartender.component'
 import { CocktailListComponent } from './components/cocktail-list/cocktail-list.component'
+import {
+  CocktailsManagementComponent
+} from './components/management/cocktails-management/cocktails-management.component'
+import { TableModule } from 'primeng/table'
+import { CocktailManagementComponent } from './components/management/cocktail-management/cocktail-management.component'
+import {
+  IngredientManagementComponent
+} from './components/management/ingredient-management/ingredient-management.component'
+import {
+  IngredientsManagementComponent
+} from './components/management/ingredients-management/ingredients-management.component'
 
 @NgModule({
   declarations: [
@@ -55,7 +66,11 @@ import { CocktailListComponent } from './components/cocktail-list/cocktail-list.
     CreateCocktailComponent,
     BartendersComponent,
     BartenderComponent,
-    CocktailListComponent
+    CocktailListComponent,
+    CocktailsManagementComponent,
+    CocktailManagementComponent,
+    IngredientManagementComponent,
+    IngredientsManagementComponent
   ],
   imports: [
     AppRoutingModule,
@@ -74,7 +89,8 @@ import { CocktailListComponent } from './components/cocktail-list/cocktail-list.
     ToastModule,
     CheckboxModule,
     ToggleButtonModule,
-    RatingModule
+    RatingModule,
+    TableModule
   ],
   providers: [
     MessageService,

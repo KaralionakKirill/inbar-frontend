@@ -30,6 +30,8 @@ export interface CreateIngredientRequest {
 
   imageId: number
 
+  author: string
+
   type: IngredientType
 
   group: IngredientGroup
@@ -41,7 +43,35 @@ export interface CreateIngredientRequest {
   taste: Taste
 }
 
+export interface UpdateIngredientRequest {
+  id: number
+
+  name: string
+
+  description: string
+
+  imageId: number
+
+  type: IngredientType
+
+  group: IngredientGroup
+
+  primaryIngredient: PrimaryIngredient
+
+  alcoholDegree: AlcoholDegree
+
+  taste: Taste
+
+  status: Status
+}
+
 export interface CreateIngredientResponse {
+  id: number
+
+  name: string
+}
+
+export interface UpdateIngredientResponse {
   id: number
 
   name: string

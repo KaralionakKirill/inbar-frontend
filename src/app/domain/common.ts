@@ -29,7 +29,13 @@ export interface Measure {
 }
 
 export enum Status {
-  PENDING,
-  REVIEWED,
-  DECLINED
+  PENDING = 'PENDING',
+  REVIEWED = 'REVIEWED',
+  DECLINED = 'DECLINED'
+}
+
+export type Page<T> = {
+  totalPages: number;
+  totalElements: number;
+  content: T[];
 }

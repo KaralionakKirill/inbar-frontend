@@ -15,20 +15,59 @@ import { CreateCocktailComponent } from './components/create-cocktail/create-coc
 import { CocktailResolverService } from './resolvers/cocktail/cocktail-resolver.service'
 import { BartendersComponent } from './components/bartenders/bartenders.component'
 import { BartenderComponent } from './components/bartender/bartender.component'
+import {
+  CocktailsManagementComponent
+} from './components/management/cocktails-management/cocktails-management.component'
+import { CocktailManagementComponent } from './components/management/cocktail-management/cocktail-management.component'
+import {
+  IngredientsManagementComponent
+} from './components/management/ingredients-management/ingredients-management.component'
+import {
+  IngredientManagementComponent
+} from './components/management/ingredient-management/ingredient-management.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'bartenders', component: BartendersComponent },
-  { path: 'bartenders/:id', component: BartenderComponent, resolve: { userInfo: UserResolverService } },
   { path: 'ingredients', component: IngredientsComponent },
-  { path: 'ingredients/:id', component: IngredientComponent, resolve: { ingredientInfo: IngredientResolverService } },
   { path: 'cocktails', component: CocktailsComponent },
-  { path: 'cocktails/:id', component: CocktailComponent, resolve: { cocktailInfo: CocktailResolverService } },
   { path: 'registration', component: RegistrationComponent },
   { path: 'create/ingredient', component: CreateIngredientComponent },
   { path: 'create/cocktail', component: CreateCocktailComponent },
   { path: 'profile', component: ProfileComponent, resolve: { userInfo: UserResolverService } },
+  { path: 'management/cocktails', component: CocktailsManagementComponent },
+  { path: 'management/ingredients', component: IngredientsManagementComponent },
+  {
+    path: 'bartenders/:name',
+    component: BartenderComponent,
+    resolve: { userInfo: UserResolverService }
+  },
+  {
+    path: 'ingredients/:id',
+    component: IngredientComponent,
+    resolve: { ingredientInfo: IngredientResolverService }
+  },
+  {
+    path: 'cocktails/:id',
+    component: CocktailComponent,
+    resolve: { cocktailInfo: CocktailResolverService }
+  },
+  {
+    path: 'management/cocktails/:id',
+    component: CocktailManagementComponent,
+    resolve: { cocktailInfo: CocktailResolverService }
+  },
+  {
+    path: 'management/ingredients/:id',
+    component: IngredientManagementComponent,
+    resolve: { ingredientInfo: IngredientResolverService }
+  },
+  {
+    path: 'management/users',
+    component: CocktailsManagementComponent,
+    resolve: { userInfo: UserResolverService }
+  },
   { path: '**', component: NotFoundComponent },
 ]
 

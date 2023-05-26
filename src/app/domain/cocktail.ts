@@ -30,7 +30,37 @@ export interface CreateCocktailRequest {
   ingredients: Array<IngredientDto>
 }
 
+export interface UpdateCocktailRequest {
+  id: number
+
+  name: string
+
+  cookingSteps: string
+
+  aboutCocktail: string
+
+  imageId: number
+
+  cookingMethod: CookingMethod
+
+  group: CocktailGroup
+
+  alcoholDegree: AlcoholDegree
+
+  taste: Taste
+
+  ingredients: Array<IngredientDto>
+
+  status: Status
+}
+
 export interface CreateCocktailResponse {
+  id: number
+
+  name: string
+}
+
+export interface UpdateCocktailResponse {
   id: number
 
   name: string

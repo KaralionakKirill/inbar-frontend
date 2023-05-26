@@ -1,0 +1,32 @@
+<app-inner-page-banner [title]="'Модерация коктейлей'"></app-inner-page-banner>
+<section class="padding-top-18 padding-bottom-18">
+    <div class="container">
+        <p-table #table
+                 [value]="cocktails"
+                 [rows]="10"
+                 [lazy]="true"
+                 (onLazyLoad)="loadData($event)"
+                 [loading]="loading"
+                 [paginator]="true"
+                 [totalRecords]="totalRecords"
+                 [rowsPerPageOptions]="[10, 25, 50]"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Название</th>
+                    <th>Дата создания</th>
+                    <th>Автор</th>
+                    <th>Статус</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cocktail>
+                <tr [class]="'p-selectable-row'" routerLink="./{{cocktail.id}}">
+                    <td>{{ cocktail.name }}</td>
+                    <td>{{ cocktail.createdTs | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+                    <td>{{ cocktail.author?.email }}</td>
+                    <td>{{ getStatusValue(cocktail.status) }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</section>
