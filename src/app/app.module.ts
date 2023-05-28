@@ -46,6 +46,7 @@ import {
 import {
   IngredientsManagementComponent
 } from './components/management/ingredients-management/ingredients-management.component'
+import { UsersManagementComponent } from './components/management/users-management/users-management.component'
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import {
     CocktailsManagementComponent,
     CocktailManagementComponent,
     IngredientManagementComponent,
-    IngredientsManagementComponent
+    IngredientsManagementComponent,
+    UsersManagementComponent
   ],
   imports: [
     AppRoutingModule,

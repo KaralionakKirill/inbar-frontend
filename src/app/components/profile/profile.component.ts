@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
       this.fileService.uploadFile(image, imageName).subscribe({
         next: fileId => {
           const request: UpdateUserRequest = {
-            username: this.userInfo.email,
+            id: this.userInfo.id,
 
             firstname: null,
 
@@ -57,7 +57,9 @@ export class ProfileComponent implements OnInit {
 
             aboutMe: null,
 
-            avatarId: fileId
+            avatarId: fileId,
+
+            role: null
           }
           this.userService.updateUser(request).subscribe({
             next: response => {
@@ -92,7 +94,7 @@ export class ProfileComponent implements OnInit {
   onUpdate() {
     if (this.form.valid) {
       const request: UpdateUserRequest = {
-        username: this.userInfo.email,
+        id: this.userInfo.id,
 
         firstname: this.form.get('firstname')!.value,
 
@@ -100,7 +102,9 @@ export class ProfileComponent implements OnInit {
 
         aboutMe: this.form.get('aboutMe')!.value,
 
-        avatarId: null
+        avatarId: null,
+
+        role: null
       }
       this.userService.updateUser(request).subscribe({
         next: response => {

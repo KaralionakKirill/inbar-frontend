@@ -247,4 +247,10 @@ export class CocktailManagementComponent implements OnInit {
       this.form.controls['taste'].invalid ||
       this.form.controls['alcoholDegree'].invalid
   }
+
+  getStatusValue(status: Status) {
+    if (status == Status.DECLINED) return 'Отклонен'
+    if (status == Status.PENDING) return 'На рассмотрении'
+    return 'Одобрен'
+  }
 }

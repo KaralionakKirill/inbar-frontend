@@ -20,7 +20,10 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-cocktail>
-                <tr [class]="'p-selectable-row'" routerLink="./{{cocktail.id}}">
+                <tr>
+                    <td>
+                        <a routerLink="./{{ cocktail.id }}">{{ cocktail.name }}</a>
+                    </td>
                     <td>{{ cocktail.name }}</td>
                     <td>{{ cocktail.createdTs | date:'dd.MM.yyyy HH:mm:ss'}}</td>
                     <td>{{ cocktail.author?.email }}</td>

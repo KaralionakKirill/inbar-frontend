@@ -1,0 +1,53 @@
+<app-inner-page-banner [title]="'Администрирование пользователей'"></app-inner-page-banner>
+<section class="padding-top-18 padding-bottom-18">
+    <div class="container">
+        <p-table #table
+                 [value]="users"
+                 [rows]="10"
+                 [lazy]="true"
+                 (onLazyLoad)="loadData($event)"
+                 [loading]="loading"
+                 [paginator]="true"
+                 [totalRecords]="totalRecords"
+                 [rowsPerPageOptions]="[10, 25, 50]"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>E-mail</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Роль</th>
+                    <th>Дата регистрации</th>
+                    <th>Дата послед. изм.</th>
+                    <th>Кол-во созд. кокт.</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td>
+                        <a routerLink="./{{ user.email }}">{{ user.email }}</a>
+                    </td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>
+                        <p-dropdown [placeholder]="'Статус'"
+                                    [(ngModel)]="user.role"
+                                    [options]="roles"
+                                    (onChange)="onChange(user)"
+                                    appendTo="body">
+                            <ng-template let-role pTemplate="item">
+                                {{ getRoleValue(role)}}
+                            </ng-template>
+                            <ng-template let-role pTemplate="selectedItem">
+                                {{ getRoleValue(role)}}
+                            </ng-template>
+                        </p-dropdown>
+                    </td>
+                    <td>{{ user.createdTs | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+                    <td>{{ user.modifiedTs | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+                    <td>{{ user.createdCocktails.length }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</section>

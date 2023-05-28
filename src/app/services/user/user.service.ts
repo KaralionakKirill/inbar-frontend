@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { UpdateUserRequest, UserInfo } from '../../domain/user'
+import { LazyLoadEvent } from 'primeng/api'
+import { Page } from '../../domain/common'
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +35,12 @@ export class UserService {
 
   getBartenders() {
     return this.http.get<Array<UserInfo>>('users/bartenders')
+  }
+
+  getUsersByFilter(filter: LazyLoadEvent) {
+    return this.http.post<Page<UserInfo>>(
+      `users`,
+      filter
+    )
   }
 }

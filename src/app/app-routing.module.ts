@@ -25,6 +25,7 @@ import {
 import {
   IngredientManagementComponent
 } from './components/management/ingredient-management/ingredient-management.component'
+import { UsersManagementComponent } from './components/management/users-management/users-management.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, resolve: { userInfo: UserResolverService } },
   { path: 'management/cocktails', component: CocktailsManagementComponent },
   { path: 'management/ingredients', component: IngredientsManagementComponent },
+  { path: 'management/users', component: UsersManagementComponent },
   {
     path: 'bartenders/:name',
     component: BartenderComponent,
@@ -64,8 +66,8 @@ const routes: Routes = [
     resolve: { ingredientInfo: IngredientResolverService }
   },
   {
-    path: 'management/users',
-    component: CocktailsManagementComponent,
+    path: 'management/users/:name',
+    component: BartenderComponent,
     resolve: { userInfo: UserResolverService }
   },
   { path: '**', component: NotFoundComponent },

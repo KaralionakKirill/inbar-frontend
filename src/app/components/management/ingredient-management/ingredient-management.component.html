@@ -9,7 +9,14 @@
                         <p-dropdown [placeholder]="'Статус'"
                                     [options]="statuses"
                                     formControlName="status"
-                                    appendTo="body"></p-dropdown>
+                                    appendTo="body">
+                            <ng-template let-status pTemplate="item">
+                                {{getStatusValue(status)}}
+                            </ng-template>
+                            <ng-template let-status pTemplate="selectedItem">
+                                {{getStatusValue(status)}}
+                            </ng-template>
+                        </p-dropdown>
                         <div class="error-message" *ngIf="form.controls['status'].invalid && submit">
                             Статус должен быть установлен
                         </div>

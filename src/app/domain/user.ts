@@ -23,7 +23,7 @@ export interface UserInfo{
 }
 
 export interface UpdateUserRequest{
-  username: string,
+  id: number,
 
   firstname: string | null
 
@@ -32,6 +32,8 @@ export interface UpdateUserRequest{
   avatarId: number | null
 
   aboutMe: string | null
+
+  role: UserRole | null
 }
 
 export enum UserRole{

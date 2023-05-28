@@ -19,7 +19,10 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-ingredient>
-                <tr [class]="'p-selectable-row'" routerLink="./{{ingredient.id}}">
+                <tr>
+                    <td>
+                        <a routerLink="./{{ ingredient.id }}">{{ ingredient.name }}</a>
+                    </td>
                     <td>{{ ingredient.name }}</td>
                     <td>{{ ingredient.createdTs | date:'dd.MM.yyyy HH:mm:ss'}}</td>
                     <td>{{ getStatusValue(ingredient.status) }}</td>
