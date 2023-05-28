@@ -1,179 +1,80 @@
 <app-inner-page-banner [title]="'Найди свой любимый коктейль'"></app-inner-page-banner>
-<!-- Recipe Area Start Here -->
 <section class="recipe-without-sidebar-wrap padding-top-18 padding-bottom-18">
     <div class="container">
         <div class="adv-search-wrap">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Поиск"/>
+                <input type="text" [(ngModel)]="inputName" class="form-control" placeholder="Поиск"/>
                 <div class="btn-group">
                     <div class="input-group-btn adv-search-fill-btn">
-                        <button type="button" id="adv-serch" class="btn-adv-serch">
-                            <i class="icon-plus flaticon-add-plus-button"></i>
-                            <i class="icon-minus fas fa-minus"></i>
+                        <button type="button" class="btn-adv-search" (click)="onAdvancedSearch()">
+                            <i *ngIf="!advancedSearch" class="icon-plus flaticon-add-plus-button"></i>
+                            <i *ngIf="advancedSearch" class="icon-minus fas fa-minus"></i>
                             Расширенный поиск
                         </button>
                     </div>
                     <div class="input-group-btn">
-                        <button type="submit" class="btn-search"><i class="flaticon-search"></i></button>
+                        <button type="submit" class="btn-search" (click)="onSearch()">
+                            <i class="flaticon-search"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="advance-search-form">
+            <div class="advance-search-form" [style.display]="advancedSearch ? 'block' : 'none'">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3 class="item-title">BY CATEGORIES</h3>
-                        <ul class="search-items">
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox101" type="checkbox">
-                                    <label for="checkbox101">Baking</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox102" type="checkbox">
-                                    <label for="checkbox102">Dinner</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox103" type="checkbox">
-                                    <label for="checkbox103">Lunch</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox104" type="checkbox">
-                                    <label for="checkbox104">Sea Food</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox105" type="checkbox">
-                                    <label for="checkbox105">Sweets</label>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="search-items">
+                            <div class="search-item">
+                                <p-dropdown [placeholder]="'Метод приготовления'"
+                                            [options]="cookingMethods"
+                                            [showClear]="true"
+                                            [filter]="true"
+                                            [(ngModel)]="selectedCookingMethod"
+                                            filterBy="name"
+                                            appendTo="body"
+                                            optionLabel="name"></p-dropdown>
+                            </div>
+                            <div class="search-item">
+                                <p-dropdown [placeholder]="'Группа'"
+                                            [options]="cocktailGroups"
+                                            [showClear]="true"
+                                            [filter]="true"
+                                            [(ngModel)]="selectedCocktailGroup"
+                                            filterBy="name"
+                                            appendTo="body"
+                                            optionLabel="name"></p-dropdown>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-6">
-                        <h3 class="item-title">BY INGREDIENTS</h3>
-                        <ul class="search-items">
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox106" type="checkbox">
-                                    <label for="checkbox106">Oil</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox107" type="checkbox">
-                                    <label for="checkbox107">Vegitables</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox108" type="checkbox">
-                                    <label for="checkbox108">Fish</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox109" type="checkbox">
-                                    <label for="checkbox109">White Salt</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox110" type="checkbox">
-                                    <label for="checkbox110">Pizza
-
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox111" type="checkbox">
-                                    <label for="checkbox111">Meat</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox112" type="checkbox">
-                                    <label for="checkbox112">Juice</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h3 class="item-title">BY CUISINE</h3>
-                        <ul class="search-items">
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox113" type="checkbox">
-                                    <label for="checkbox113">Indian</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox114" type="checkbox">
-                                    <label for="checkbox114">Italian</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox115" type="checkbox">
-                                    <label for="checkbox115">Maxican</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox116" type="checkbox">
-                                    <label for="checkbox116">Bengali</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox117" type="checkbox">
-                                    <label for="checkbox117">Franch</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <h3 class="item-title">BY METHOD</h3>
-                        <ul class="search-items">
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox118" type="checkbox">
-                                    <label for="checkbox118">Baking</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox119" type="checkbox">
-                                    <label for="checkbox119">Freezing</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox120" type="checkbox">
-                                    <label for="checkbox120">Frying</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox121" type="checkbox">
-                                    <label for="checkbox121">Grilling</label>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="search-items">
+                            <div class="search-item">
+                                <p-dropdown [placeholder]="'Вкус'"
+                                            [options]="tastes"
+                                            [showClear]="true"
+                                            [filter]="true"
+                                            [(ngModel)]="selectedTaste"
+                                            filterBy="name"
+                                            appendTo="body"
+                                            class="mr-2"
+                                            optionLabel="name"></p-dropdown>
+                            </div>
+                            <div class="search-item">
+                                <p-dropdown [placeholder]="'Градус'"
+                                            [options]="alcoholDegrees"
+                                            [showClear]="true"
+                                            [filter]="true"
+                                            [(ngModel)]="selectedAlcoholDegree"
+                                            filterBy="name"
+                                            appendTo="body"
+                                            optionLabel="name"></p-dropdown>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <app-cocktail-list [cocktails]="cocktails"></app-cocktail-list>
+        <app-cocktail-list [cocktails]="cocktails"
+                           [totalRecords]="totalRecords"
+                           (paginatorOutput)="onPageChange($event)"></app-cocktail-list>
     </div>
 </section>
-<!-- Recipe Area End Here -->

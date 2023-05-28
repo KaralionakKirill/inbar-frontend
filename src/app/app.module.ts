@@ -47,6 +47,7 @@ import {
   IngredientsManagementComponent
 } from './components/management/ingredients-management/ingredients-management.component'
 import { UsersManagementComponent } from './components/management/users-management/users-management.component'
+import { PaginatorModule } from 'primeng/paginator'
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { UsersManagementComponent } from './components/management/users-manageme
     CheckboxModule,
     ToggleButtonModule,
     RatingModule,
-    TableModule
+    TableModule,
+    PaginatorModule
   ],
   providers: [
     MessageService,

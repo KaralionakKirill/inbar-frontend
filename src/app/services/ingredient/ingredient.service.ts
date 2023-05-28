@@ -8,8 +8,8 @@ import {
   UpdateIngredientResponse
 } from '../../domain/ingredient'
 import { HttpClient } from '@angular/common/http'
-import { LazyLoadEvent } from 'primeng/api'
 import { Page } from '../../domain/common'
+import { Filter } from '../../domain/filter'
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class IngredientService {
     return this.http.get<IngredientInfo>(`ingredients/${id}`)
   }
 
-  getIngredientsByFilter(filter: LazyLoadEvent) {
+  getIngredientsByFilter(filter: Filter) {
     return this.http.post<Page<Ingredient>>(
       'ingredients',
       filter

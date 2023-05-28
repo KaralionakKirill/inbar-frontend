@@ -5,7 +5,7 @@
                  [value]="cocktails"
                  [rows]="10"
                  [lazy]="true"
-                 (onLazyLoad)="loadData($event)"
+                 (onPage)="loadData($event.first)"
                  [loading]="loading"
                  [paginator]="true"
                  [totalRecords]="totalRecords"
@@ -24,7 +24,6 @@
                     <td>
                         <a routerLink="./{{ cocktail.id }}">{{ cocktail.name }}</a>
                     </td>
-                    <td>{{ cocktail.name }}</td>
                     <td>{{ cocktail.createdTs | date:'dd.MM.yyyy HH:mm:ss'}}</td>
                     <td>{{ cocktail.author?.email }}</td>
                     <td>{{ getStatusValue(cocktail.status) }}</td>

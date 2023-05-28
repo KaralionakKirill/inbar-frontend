@@ -1,0 +1,21 @@
+::ng-deep .p-dropdown {
+    border-radius: 0 !important;
+}
+
+::ng-deep .p-dropdown:hover {
+    border-color: #ff4a52 !important;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+    border-color: #ff4a52 !important;
+    box-shadow: 0 0 0 0.2rem #ff4A5233;
+}
+
+::ng-deep .p-dropdown-panel {
+    border-radius: 0 !important;
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background-color: #ff4A5233;
+    color: #ff4a52;
+}

@@ -9,7 +9,7 @@ import {
 } from '../../domain/cocktail'
 import { Page } from '../../domain/common'
 import { HttpClient } from '@angular/common/http'
-import { LazyLoadEvent } from 'primeng/api'
+import { Filter } from '../../domain/filter'
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +52,7 @@ export class CocktailService {
     )
   }
 
-  getCocktailsByFilter(filter: LazyLoadEvent) {
+  getCocktailsByFilter(filter: Filter) {
     return this.http.post<Page<Cocktail>>(
       '/cocktails',
       filter

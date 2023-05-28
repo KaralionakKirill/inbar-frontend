@@ -47,3 +47,9 @@
         </div>
     </div>
 </div>
+<p-paginator
+        (onPageChange)="onPageChange($event)"
+        [rows]="10"
+        [totalRecords]="totalRecords"
+        [rowsPerPageOptions]="[10, 20, 30]">
+</p-paginator>

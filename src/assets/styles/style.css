@@ -2186,7 +2186,7 @@ ul {
     box-shadow: none;
 }
 
-.adv-search-wrap .btn-group .input-group-btn button.btn-adv-serch {
+.adv-search-wrap .btn-group .input-group-btn button.btn-adv-search {
     border-top: 1px solid #d5d5d5;
     border-bottom: 1px solid #d5d5d5;
     background-color: transparent;
@@ -2199,7 +2199,7 @@ ul {
     align-items: center;
 }
 
-.adv-search-wrap .btn-group .input-group-btn button.btn-adv-serch i {
+.adv-search-wrap .btn-group .input-group-btn button.btn-adv-search i {
     color: #ff4a52;
     margin-right: 8px;
     font-size: 12px;
@@ -2207,26 +2207,10 @@ ul {
     width: 15px;
 }
 
-.adv-search-wrap .btn-group .input-group-btn button.btn-adv-serch i:before {
+.adv-search-wrap .btn-group .input-group-btn button.btn-adv-search i:before {
     font-size: 12px;
     font-weight: 900;
     color: #ff4a52;
-}
-
-.adv-search-wrap .btn-group .input-group-btn .btn-adv-serch .icon-plus {
-    display: block;
-}
-
-.adv-search-wrap .btn-group .input-group-btn .btn-adv-serch .icon-minus {
-    display: none;
-}
-
-.adv-search-wrap .btn-group .input-group-btn .btn-adv-serch.icon-alter .icon-plus {
-    display: none;
-}
-
-.adv-search-wrap .btn-group .input-group-btn .btn-adv-serch.icon-alter .icon-minus {
-    display: block;
 }
 
 .adv-search-wrap .btn-group .input-group-btn button.btn-search {
@@ -2288,7 +2272,7 @@ ul {
     border-bottom: 1px solid #d5d5d5;
 }
 
-.adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-serch {
+.adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-search {
     border-top: none;
     border-bottom: none;
     margin-top: 5px;
@@ -2300,16 +2284,16 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-    .adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-serch {
+    .adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-search {
         height: 40px;
     }
 }
 
-.adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-serch i {
+.adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-search i {
     color: #9a9a9a;
 }
 
-.adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-serch i:before {
+.adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-search i:before {
     color: #9a9a9a;
 }
 

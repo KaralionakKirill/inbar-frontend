@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { Cocktail, CocktailGroup } from '../../domain/cocktail'
 import { CocktailService } from '../../services/cocktail/cocktail.service'
 import { AuthService } from '../../services/auth/auth.service'
@@ -12,6 +12,8 @@ import { FileService } from '../../services/file/file.service'
 })
 export class CocktailListComponent {
   @Input() cocktails: Array<Cocktail> = []
+  @Input() totalRecords: number = 0
+  @Output() paginatorOutput = new EventEmitter<number>()
 
   constructor(private cocktailService: CocktailService,
               private authService: AuthService,
@@ -37,5 +39,9 @@ export class CocktailListComponent {
         this.informationService.error(err.error.message)
       }
     })
+  }
+
+  onPageChange(event: any) {
+    this.paginatorOutput.emit(event.first)
   }
 }
